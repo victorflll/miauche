@@ -119,6 +119,7 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Column(
           children: [
             AppTextFormField(
+              obscureText: false,
               controller: _emailController,
               keybordType: TextInputType.emailAddress,
               label: "E-mail",
@@ -127,12 +128,12 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             const SizedBox(height: 12),
             AppTextFormField(
+              obscureText: true,
               controller: _passwordController,
               keybordType: TextInputType.visiblePassword,
               label: "Senha",
               hintText: "Insira sua senha aqui...",
               prefixIcon: Icons.lock_rounded,
-              sufixIcon: Icons.remove_red_eye,
             ),
             AppCompleteButton(
               text: "Entrar",

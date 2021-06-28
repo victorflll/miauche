@@ -1,14 +1,14 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:miauche/ui/styles/app_colors.dart';
 
-class AppTextFormField extends StatelessWidget {
+class AppTextFormField extends StatefulWidget {
   final TextEditingController controller;
   final TextInputType keybordType;
   final String label;
   final String hintText;
   final IconData prefixIcon;
   final IconData? sufixIcon;
+  final bool obscureText;
 
   const AppTextFormField({
     Key? key,
@@ -17,25 +17,46 @@ class AppTextFormField extends StatelessWidget {
     required this.label,
     required this.hintText,
     required this.prefixIcon,
+    required this.obscureText,
     this.sufixIcon,
   }) : super(key: key);
+
+  @override
+  State<AppTextFormField> createState() => _AppTextFormFieldState();
+}
+
+class _AppTextFormFieldState extends State<AppTextFormField> {
+  bool _obscureText = true;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       //validator: ,
-      controller: controller,
-      keyboardType: keybordType,
+      controller: widget.controller,
+      keyboardType: widget.keybordType,
+      obscureText: _obscureText,
       decoration: InputDecoration(
-        labelText: label,
+        labelText: widget.label,
         filled: true,
         fillColor: AppColors.background,
-        hintText: hintText,
+        hintText: widget.hintText,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
         ),
-        prefixIcon: Icon(prefixIcon),
-        suffixIcon: Icon(sufixIcon),
+        prefixIcon: Icon(widget.prefixIcon),
+        suffixIcon: widget.obscureText
+            ? IconButton(
+                icon: Icon(
+                  _obscureText ? Icons.visibility : Icons.visibility_off,
+                  color: AppColors.blue,
+                ),
+                onPressed: () {
+                  setState(() {
+                    _obscureText = !_obscureText;
+                  });
+                },
+              )
+            : null,
       ),
     );
   }
