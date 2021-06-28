@@ -8,6 +8,7 @@ class AppText extends StatelessWidget {
   final String fontFamily;
   final bool isBold;
   final double? letterSpacing;
+  final TextAlign align;
 
   const AppText({
     Key? key,
@@ -17,12 +18,13 @@ class AppText extends StatelessWidget {
     this.fontFamily = "Poppins",
     this.isBold = false,
     this.letterSpacing,
+    this.align = TextAlign.center,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Text(
       label,
-      textAlign: TextAlign.center,
+      textAlign: align,
       style: TextStyle(
         letterSpacing: letterSpacing,
         fontSize: fontSize,
