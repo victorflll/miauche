@@ -43,7 +43,10 @@ class _AppTextFormFieldState extends State<AppTextFormField> {
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
         ),
-        prefixIcon: Icon(widget.prefixIcon),
+        prefixIcon: Icon(
+          widget.prefixIcon,
+          color: AppColors.blue,
+        ),
         suffixIcon: widget.obscureText
             ? IconButton(
                 icon: Icon(

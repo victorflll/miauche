@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:miauche/ui/screens/login_screen.dart';
+import 'package:miauche/ui/screens/user_register_screen.dart';
 import 'package:miauche/ui/styles/app_theme.dart';
 
 void main() {
@@ -21,7 +22,11 @@ class MyApp extends StatelessWidget {
       title: 'Miauche',
       debugShowCheckedModeBanner: false,
       theme: AppThemes.generalTheme,
-      home: const LoginScreen(),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const LoginScreen(),
+        '/user-register-screen': (context) => const UserRegisterScreen(),
+      },
     );
   }
 }

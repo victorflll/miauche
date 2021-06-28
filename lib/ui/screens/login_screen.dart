@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:miauche/ui/screens/user_register_screen.dart';
 import 'package:miauche/ui/styles/app_colors.dart';
 import 'package:miauche/ui/widgets/buttons/app_complete_button.dart';
 import 'package:miauche/ui/widgets/line.dart';
@@ -197,7 +198,9 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             const SizedBox(width: 8),
             GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, "/user-register-screen");
+              },
               child: const AppText(
                 label: "Cadastre-se",
                 color: AppColors.darkBlue,
