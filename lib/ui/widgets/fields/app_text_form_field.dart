@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:miauche/ui/styles/app_colors.dart';
 
-class AppTextFormField extends StatefulWidget {
+class AppTextFormField extends StatelessWidget {
   final TextEditingController controller;
   final TextInputType keybordType;
   final String label;
   final String hintText;
   final IconData prefixIcon;
-  final IconData? sufixIcon;
+  final Widget? suffixIcon;
   final bool obscureText;
+  final FormFieldValidator<String>? validator;
+  final int maxLength;
 
   const AppTextFormField({
     Key? key,
@@ -18,48 +20,40 @@ class AppTextFormField extends StatefulWidget {
     required this.hintText,
     required this.prefixIcon,
     required this.obscureText,
-    this.sufixIcon,
+    this.suffixIcon,
+    this.validator,
+    this.maxLength = 100,
   }) : super(key: key);
-
-  @override
-  State<AppTextFormField> createState() => _AppTextFormFieldState();
-}
-
-class _AppTextFormFieldState extends State<AppTextFormField> {
-  bool _obscureText = true;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      //validator: ,
-      controller: widget.controller,
-      keyboardType: widget.keybordType,
-      obscureText: _obscureText,
+      validator: validator ??
+          (String? text) {
+            if (text == null || text.isEmpty) {
+              return "Campo obrigatório!";
+            } else if (text.length > maxLength) {
+              return "Você ultrapassou o limite de caracteres!";
+            }
+
+            return null;
+          },
+      controller: controller,
+      keyboardType: keybordType,
+      obscureText: obscureText,
       decoration: InputDecoration(
-        labelText: widget.label,
+        labelText: label,
         filled: true,
         fillColor: AppColors.background,
-        hintText: widget.hintText,
+        hintText: hintText,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8),
         ),
         prefixIcon: Icon(
-          widget.prefixIcon,
+          prefixIcon,
           color: AppColors.blue,
         ),
-        suffixIcon: widget.obscureText
-            ? IconButton(
-                icon: Icon(
-                  _obscureText ? Icons.visibility : Icons.visibility_off,
-                  color: AppColors.blue,
-                ),
-                onPressed: () {
-                  setState(() {
-                    _obscureText = !_obscureText;
-                  });
-                },
-              )
-            : null,
+        suffixIcon: suffixIcon,
       ),
     );
   }

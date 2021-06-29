@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:miauche/ui/screens/user_register_screen.dart';
 import 'package:miauche/ui/styles/app_colors.dart';
 import 'package:miauche/ui/widgets/buttons/app_complete_button.dart';
+import 'package:miauche/ui/widgets/fields/app_password_form_field.dart';
 import 'package:miauche/ui/widgets/line.dart';
 import 'package:miauche/ui/widgets/buttons/app_rounded_icon_button.dart';
 import 'package:miauche/ui/widgets/app_text.dart';
@@ -128,17 +128,15 @@ class _LoginScreenState extends State<LoginScreen> {
               prefixIcon: Icons.email,
             ),
             const SizedBox(height: 12),
-            AppTextFormField(
-              obscureText: true,
+            AppPasswordFormField(
               controller: _passwordController,
-              keybordType: TextInputType.visiblePassword,
-              label: "Senha",
-              hintText: "Insira sua senha aqui...",
-              prefixIcon: Icons.lock_rounded,
+              obscureText: true,
             ),
             AppCompleteButton(
               text: "Entrar",
-              onPressed: () => {},
+              onPressed: () => {
+                //Navigator.pushNamed(context, "/home-screen"),
+              },
             ),
             buildFooter(),
           ],
@@ -199,7 +197,7 @@ class _LoginScreenState extends State<LoginScreen> {
             const SizedBox(width: 8),
             GestureDetector(
               onTap: () {
-                Navigator.pushNamed(context, "/user-register-screen");
+                //Navigator.pushNamed(context, "/user-register-screen");
               },
               child: const AppText(
                 label: "Cadastre-se",
