@@ -47,119 +47,125 @@ class _RegisterLostScreenState extends State<RegisterLostScreen> {
                   fontSize: 36,
                 ),
                 Container(
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                  margin: const EdgeInsets.symmetric(
+                    horizontal: 24,
+                    vertical: 12,
+                  ),
                   child: Form(
-                      child: Column(
-                    // ignore: prefer_const_literals_to_create_immutables
-                    children: [
-                      Container(
-                        margin: const EdgeInsets.all(6),
-                        child: TextFormField(
+                    child: Column(
+                      // ignore: prefer_const_literals_to_create_immutables
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.all(6),
+                          child: TextFormField(
                             decoration: const InputDecoration(
-                                labelText: "Nome:",
-                                fillColor: AppColors.background,
-                                filled: true,
-                                hintText:
-                                    "Informe o nome do seu animal aqui...")),
-                      ),
-                      Container(
-                        margin: const EdgeInsets.all(6),
-                        child: TextFormField(
+                              labelText: "Nome:",
+                              fillColor: AppColors.background,
+                              filled: true,
+                              hintText: "Informe o nome do seu animal aqui...",
+                            ),
+                          ),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.all(6),
+                          child: TextFormField(
                             keyboardType: TextInputType.number,
                             decoration: const InputDecoration(
-                                labelText: "Idade:",
-                                fillColor: AppColors.background,
-                                filled: true,
-                                hintText:
-                                    "Informe a idade do seu animal aqui...")),
-                      ),
-                      AppDropdown(
-                        items: const ["Sim", "Não"],
-                        hint: "Possui alguma deficiência?",
-                        callback: _selectDeficiency,
-                      ),
-                      Container(
-                        margin: const EdgeInsets.all(6),
-                        child: TextFormField(
+                              labelText: "Idade:",
+                              fillColor: AppColors.background,
+                              filled: true,
+                              hintText: "Informe a idade do seu animal aqui...",
+                            ),
+                          ),
+                        ),
+                        AppDropdown(
+                          items: const ["Sim", "Não"],
+                          hint: "Possui alguma deficiência?",
+                          callback: _selectDeficiency,
+                        ),
+                        Container(
+                          margin: const EdgeInsets.all(6),
+                          child: TextFormField(
                             decoration: const InputDecoration(
-                                labelText: "Deficiência:",
-                                fillColor: AppColors.background,
-                                filled: true,
-                                hintText:
-                                    "Informe a deficiência do seu animal aqui...")),
-                      ),
-                      AppDropdown(
-                        items: const ["Cachorro", "Gato"],
-                        hint: "Animal:",
-                        callback: _selectAnimal,
-                      ),
-                      AppDropdown(
-                        items: const ["Fêmea", "Macho"],
-                        hint: "Gênero:",
-                        callback: _selectGender,
-                      ),
-                      AppDropdown(
-                        items: const [
-                          "Vira-lata",
-                          "Angorá Turco",
-                          "Maine Coon",
-                          "Persa",
-                          "Siamês",
-                          "Ragdoll"
-                        ],
-                        hint: "Raça (Gato):",
-                        callback: _selectcatBreed,
-                      ),
-                      AppDropdown(
-                        items: const [
-                          "Vira-lata",
-                          "Shih-Tzu",
-                          "Yorkshire",
-                          "Poodle",
-                          "Lhasa Apso",
-                          "Buldogue Francês",
-                          "Maltês",
-                          "Golden Retriever",
-                          "Labrador",
-                          "Pug",
-                          "Dachshund(salsicha)",
-                          "Spitz Alemão",
-                          "Pinscher",
-                          "Schnauzer",
-                          "Beagle",
-                          "Cocker Spaniel",
-                          "Border Collie",
-                          "Buldogue Inglês",
-                          "Pit Bull",
-                          "Chow Chow"
-                        ],
-                        hint: "Raça (Cachorro):",
-                        callback: _selectdogBreed,
-                      ),
-                      AppDropdown(
-                        items: const ["Pequeno", "Médio", "Grande"],
-                        hint: "Porte:",
-                        callback: _selectsizeAnimal,
-                      ),
-                      AppDropdown(
-                        items: const ["Curta", "Média", "Longa"],
-                        hint: "Pelagem:",
-                        callback: _selectfur,
-                      ),
-                      AppDropdown(
-                        items: const [
-                          "Branca",
-                          "Preta",
-                          "Marrom",
-                          "Dourada",
-                          "Cinza",
-                          "Creme"
-                        ],
-                        hint: "Cor da Pelagem:",
-                        callback: _selectfurColor,
-                      ),
-                      Container(
+                              labelText: "Deficiência:",
+                              fillColor: AppColors.background,
+                              filled: true,
+                              hintText:
+                                  "Informe a deficiência do seu animal aqui...",
+                            ),
+                          ),
+                        ),
+                        AppDropdown(
+                          items: const ["Cachorro", "Gato"],
+                          hint: "Animal:",
+                          callback: _selectAnimal,
+                        ),
+                        AppDropdown(
+                          items: const ["Fêmea", "Macho"],
+                          hint: "Gênero:",
+                          callback: _selectGender,
+                        ),
+                        AppDropdown(
+                          items: const [
+                            "Vira-lata",
+                            "Angorá Turco",
+                            "Maine Coon",
+                            "Persa",
+                            "Siamês",
+                            "Ragdoll"
+                          ],
+                          hint: "Raça (Gato):",
+                          callback: _selectcatBreed,
+                        ),
+                        AppDropdown(
+                          items: const [
+                            "Vira-lata",
+                            "Shih-Tzu",
+                            "Yorkshire",
+                            "Poodle",
+                            "Lhasa Apso",
+                            "Buldogue Francês",
+                            "Maltês",
+                            "Golden Retriever",
+                            "Labrador",
+                            "Pug",
+                            "Dachshund(salsicha)",
+                            "Spitz Alemão",
+                            "Pinscher",
+                            "Schnauzer",
+                            "Beagle",
+                            "Cocker Spaniel",
+                            "Border Collie",
+                            "Buldogue Inglês",
+                            "Pit Bull",
+                            "Chow Chow"
+                          ],
+                          hint: "Raça (Cachorro):",
+                          callback: _selectdogBreed,
+                        ),
+                        AppDropdown(
+                          items: const ["Pequeno", "Médio", "Grande"],
+                          hint: "Porte:",
+                          callback: _selectsizeAnimal,
+                        ),
+                        AppDropdown(
+                          items: const ["Curta", "Média", "Longa"],
+                          hint: "Pelagem:",
+                          callback: _selectfur,
+                        ),
+                        AppDropdown(
+                          items: const [
+                            "Branca",
+                            "Preta",
+                            "Marrom",
+                            "Dourada",
+                            "Cinza",
+                            "Creme"
+                          ],
+                          hint: "Cor da Pelagem:",
+                          callback: _selectfurColor,
+                        ),
+                        Container(
                           margin: const EdgeInsets.all(6),
                           child: TextFormField(
                             decoration: const InputDecoration(
@@ -169,24 +175,28 @@ class _RegisterLostScreenState extends State<RegisterLostScreen> {
                               hintText:
                                   "Informe caracteristicas do seu animal aqui...",
                             ),
-                          )),
-                      Container(
-                        margin: const EdgeInsets.symmetric(
-                            horizontal: 24, vertical: 8),
-                        width: double.maxFinite,
-                        child: ElevatedButton(
-                          style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all<Color>(
-                              AppColors.darkBlue,
-                            ),
                           ),
-                          child: const Text("Próximo"),
-                          onPressed: () {},
                         ),
-                      ),
-                    ],
-                  )),
-                )
+                        Container(
+                          margin: const EdgeInsets.symmetric(
+                            horizontal: 24,
+                            vertical: 8,
+                          ),
+                          width: double.maxFinite,
+                          child: ElevatedButton(
+                            style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all<Color>(
+                                AppColors.darkBlue,
+                              ),
+                            ),
+                            child: const Text("Próximo"),
+                            onPressed: () {},
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
