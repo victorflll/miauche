@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:miauche/ui/screens/login_screen.dart';
+import 'package:miauche/ui/screens/user_register_screen.dart';
 import 'package:miauche/ui/styles/app_theme.dart';
 
 void main() {
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => const LoginScreen(),
-        //'/user-register-screen': (context) => const UserRegisterScreen(),
+        '/user-register-screen': (context) => const UserRegisterScreen(),
         //'/home-screen': (context) => const HomeScreen(),
       },
     );
