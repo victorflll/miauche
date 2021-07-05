@@ -23,13 +23,22 @@ class _AppDropdownState extends State<AppDropdown> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(left: 12),
-      margin: const EdgeInsets.all(6),
-      color: AppColors.background,
-      child: DropdownButton(
+      padding: const EdgeInsets.only(
+        left: 12,
+        top: 6,
+        bottom: 6,
+      ),
+      color: AppColors.white,
+      child: DropdownButtonFormField(
+        decoration: const InputDecoration(
+          enabledBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: AppColors.white),
+          ),
+        ),
+        isDense: true,
         isExpanded: true,
         dropdownColor: AppColors.white,
-        iconEnabledColor: AppColors.darkBlue,
+        iconEnabledColor: AppColors.blue,
         value: dropdownItem,
         hint: Text(widget.hint),
         items: widget.items.map<DropdownMenuItem<String>>((String item) {
