@@ -7,15 +7,16 @@ import 'package:miauche/ui/widgets/app_dropdown.dart';
 import 'package:miauche/ui/widgets/app_text.dart';
 import 'package:miauche/ui/widgets/buttons/app_next_button.dart';
 
-class RegisterAnimalLostScreen extends StatefulWidget {
-  const RegisterAnimalLostScreen({Key? key}) : super(key: key);
+class LostAnimalGeneralRegisterScreen extends StatefulWidget {
+  const LostAnimalGeneralRegisterScreen({Key? key}) : super(key: key);
 
   @override
-  State<RegisterAnimalLostScreen> createState() =>
-      _RegisterAnimalLostScreenState();
+  State<LostAnimalGeneralRegisterScreen> createState() =>
+      _LostAnimalGeneralRegisterScreenState();
 }
 
-class _RegisterAnimalLostScreenState extends State<RegisterAnimalLostScreen> {
+class _LostAnimalGeneralRegisterScreenState
+    extends State<LostAnimalGeneralRegisterScreen> {
   late String _deficiency;
   late String _animal;
   late String _gender;
@@ -45,22 +46,17 @@ class _RegisterAnimalLostScreenState extends State<RegisterAnimalLostScreen> {
       body: SafeArea(
         child: SingleChildScrollView(
           child: Container(
-            margin: const EdgeInsets.symmetric(
-              horizontal: 24,
-            ),
+            margin: const EdgeInsets.symmetric(horizontal: 24),
             child: Column(
               children: [
-                const SizedBox(
-                  height: 32,
-                ),
-                const AppText(
-                  label: "Animal Perdido",
-                  fontSize: 36,
-                  color: AppColors.darkBlue,
-                  isBold: true,
-                ),
-                const SizedBox(
-                  height: 32,
+                Container(
+                  margin: const EdgeInsets.symmetric(vertical: 32),
+                  child: const AppText(
+                    label: "Animal Perdido",
+                    fontSize: 36,
+                    color: AppColors.darkBlue,
+                    isBold: true,
+                  ),
                 ),
                 Form(
                   child: Column(
@@ -77,9 +73,7 @@ class _RegisterAnimalLostScreenState extends State<RegisterAnimalLostScreen> {
                           hintText: "Informe o nome do seu animal aqui...",
                         ),
                       ),
-                      const SizedBox(
-                        height: 16,
-                      ),
+                      const SizedBox(height: 16),
                       TextFormField(
                         keyboardType: TextInputType.text,
                         decoration: const InputDecoration(
@@ -92,9 +86,7 @@ class _RegisterAnimalLostScreenState extends State<RegisterAnimalLostScreen> {
                           hintText: "Informe a idade do seu animal aqui...",
                         ),
                       ),
-                      const SizedBox(
-                        height: 16,
-                      ),
+                      const SizedBox(height: 16),
                       AppDropdown(
                         items: const [
                           "Sim",
@@ -103,9 +95,7 @@ class _RegisterAnimalLostScreenState extends State<RegisterAnimalLostScreen> {
                         hint: "Possui alguma deficiência?",
                         callback: _selectDeficiency,
                       ),
-                      const SizedBox(
-                        height: 16,
-                      ),
+                      const SizedBox(height: 16),
                       TextFormField(
                         keyboardType: TextInputType.text,
                         decoration: const InputDecoration(
@@ -119,9 +109,7 @@ class _RegisterAnimalLostScreenState extends State<RegisterAnimalLostScreen> {
                               "Informe a deficiência do seu animal aqui...",
                         ),
                       ),
-                      const SizedBox(
-                        height: 16,
-                      ),
+                      const SizedBox(height: 16),
                       AppDropdown(
                         items: const [
                           "Cachorro",
@@ -130,9 +118,7 @@ class _RegisterAnimalLostScreenState extends State<RegisterAnimalLostScreen> {
                         hint: "Animal:",
                         callback: _selectAnimal,
                       ),
-                      const SizedBox(
-                        height: 16,
-                      ),
+                      const SizedBox(height: 16),
                       AppDropdown(
                         items: const [
                           "Fêmea",
@@ -156,9 +142,7 @@ class _RegisterAnimalLostScreenState extends State<RegisterAnimalLostScreen> {
                         hint: "Raça (Gato):",
                         callback: _selectCatBreed,
                       ),
-                      const SizedBox(
-                        height: 16,
-                      ),
+                      const SizedBox(height: 16),
                       AppDropdown(
                         items: const [
                           "Vira-lata",
@@ -185,9 +169,7 @@ class _RegisterAnimalLostScreenState extends State<RegisterAnimalLostScreen> {
                         hint: "Raça (Cachorro):",
                         callback: _selectDogBreed,
                       ),
-                      const SizedBox(
-                        height: 16,
-                      ),
+                      const SizedBox(height: 16),
                       AppDropdown(
                         items: const [
                           "Pequeno",
@@ -197,9 +179,7 @@ class _RegisterAnimalLostScreenState extends State<RegisterAnimalLostScreen> {
                         hint: "Porte:",
                         callback: _selectSizeAnimal,
                       ),
-                      const SizedBox(
-                        height: 16,
-                      ),
+                      const SizedBox(height: 16),
                       AppDropdown(
                         items: const [
                           "Curta",
@@ -209,9 +189,7 @@ class _RegisterAnimalLostScreenState extends State<RegisterAnimalLostScreen> {
                         hint: "Pelagem:",
                         callback: _selectFur,
                       ),
-                      const SizedBox(
-                        height: 16,
-                      ),
+                      const SizedBox(height: 16),
                       AppDropdown(
                         items: const [
                           "Branca",
@@ -224,9 +202,7 @@ class _RegisterAnimalLostScreenState extends State<RegisterAnimalLostScreen> {
                         hint: "Cor da Pelagem:",
                         callback: _selectFurColor,
                       ),
-                      const SizedBox(
-                        height: 16,
-                      ),
+                      const SizedBox(height: 16),
                       TextFormField(
                         keyboardType: TextInputType.multiline,
                         decoration: const InputDecoration(
@@ -240,9 +216,7 @@ class _RegisterAnimalLostScreenState extends State<RegisterAnimalLostScreen> {
                               "Informe caracteristicas do seu animal aqui...",
                         ),
                       ),
-                      const SizedBox(
-                        height: 16,
-                      ),
+                      const SizedBox(height: 16),
                       AppNextButton(
                         onPressed: () => {},
                       ),

@@ -23,10 +23,9 @@ class _AppDropdownState extends State<AppDropdown> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(
-        left: 12,
-        top: 6,
-        bottom: 6,
+      padding: const EdgeInsets.symmetric(
+        vertical: 6,
+        horizontal: 12,
       ),
       color: AppColors.white,
       child: DropdownButtonFormField(
