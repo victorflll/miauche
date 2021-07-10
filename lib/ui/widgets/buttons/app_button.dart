@@ -4,14 +4,14 @@ import 'package:miauche/ui/styles/app_colors.dart';
 
 import '../app_text.dart';
 
-class AppCompleteButton extends StatelessWidget {
+class AppButton extends StatelessWidget {
   final String text;
   final Color textColor;
   final Color buttonColor;
   final double height;
   final VoidCallback onPressed;
 
-  const AppCompleteButton({
+  const AppButton({
     Key? key,
     required this.text,
     this.textColor = AppColors.white,

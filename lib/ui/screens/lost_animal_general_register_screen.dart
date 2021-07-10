@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/services.dart';
 import 'package:miauche/ui/styles/app_colors.dart';
-import 'package:miauche/ui/widgets/app_dropdown.dart';
 import 'package:miauche/ui/widgets/app_text.dart';
 import 'package:miauche/ui/widgets/buttons/app_next_button.dart';
+import 'package:miauche/ui/widgets/fields/app_dropdown.dart';
 
 class LostAnimalGeneralRegisterScreen extends StatefulWidget {
   const LostAnimalGeneralRegisterScreen({Key? key}) : super(key: key);

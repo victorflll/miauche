@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:miauche/ui/styles/app_colors.dart';
-import 'package:miauche/ui/widgets/buttons/app_complete_button.dart';
+import 'package:miauche/ui/widgets/buttons/app_button.dart';
 import 'package:miauche/ui/widgets/fields/app_password_form_field.dart';
 import 'package:miauche/ui/widgets/line.dart';
 import 'package:miauche/ui/widgets/buttons/app_rounded_icon_button.dart';
@@ -132,10 +132,10 @@ class _LoginScreenState extends State<LoginScreen> {
               controller: _passwordController,
               obscureText: true,
             ),
-            AppCompleteButton(
+            AppButton(
               text: "Entrar",
               onPressed: () => {
-                //Navigator.pushNamed(context, "/home-screen"),
+                Navigator.pushNamed(context, "/home-screen"),
               },
             ),
             buildFooter(),
