@@ -26,13 +26,16 @@ class _AppPasswordFormFieldState extends State<AppPasswordFormField> {
       keybordType: TextInputType.visiblePassword,
       label: "Senha",
       hintText: "Insira aqui sua senha...",
-      prefixIcon: Icons.lock_rounded,
+      prefixIcon: const Icon(
+        Icons.lock_rounded,
+        color: AppColors.violet,
+      ),
       obscureText: _obscureText,
       suffixIcon: widget.obscureText
           ? IconButton(
               icon: Icon(
                 _obscureText ? Icons.visibility : Icons.visibility_off,
-                color: AppColors.blue,
+                color: AppColors.violet,
               ),
               onPressed: () {
                 setState(() {

@@ -6,7 +6,7 @@ class AppTextFormField extends StatelessWidget {
   final TextInputType keybordType;
   final String label;
   final String hintText;
-  final IconData? prefixIcon;
+  final Widget? prefixIcon;
   final Widget? suffixIcon;
   final bool obscureText;
   final FormFieldValidator<String>? validator;
@@ -45,10 +45,7 @@ class AppTextFormField extends StatelessWidget {
         labelText: label,
         fillColor: AppColors.background,
         hintText: hintText,
-        prefixIcon: Icon(
-          prefixIcon,
-          color: AppColors.blue,
-        ),
+        prefixIcon: prefixIcon,
         suffixIcon: suffixIcon,
       ),
     );

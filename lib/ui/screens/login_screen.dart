@@ -125,7 +125,10 @@ class _LoginScreenState extends State<LoginScreen> {
               keybordType: TextInputType.emailAddress,
               label: "E-mail",
               hintText: "Insira seu email aqui...",
-              prefixIcon: Icons.email,
+              prefixIcon: const Icon(
+                Icons.email,
+                color: AppColors.violet,
+              ),
             ),
             const SizedBox(height: 12),
             AppPasswordFormField(
@@ -197,7 +200,7 @@ class _LoginScreenState extends State<LoginScreen> {
             const SizedBox(width: 8),
             GestureDetector(
               onTap: () {
-                //Navigator.pushNamed(context, "/user-register-screen");
+                Navigator.pushNamed(context, "/user-register-screen");
               },
               child: const AppText(
                 label: "Cadastre-se",
