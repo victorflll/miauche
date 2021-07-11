@@ -10,24 +10,24 @@ import 'package:miauche/ui/widgets/fields/app_dropdown.dart';
 import 'package:miauche/ui/widgets/indicator/app_indicator.dart';
 import 'package:miauche/ui/widgets/fields/app_text_form_field.dart';
 
-class LostAnimalGeneralRegisterScreen extends StatefulWidget {
-  const LostAnimalGeneralRegisterScreen({Key? key}) : super(key: key);
+class FindAnimalGeneralRegisterScreen extends StatefulWidget {
+  const FindAnimalGeneralRegisterScreen({Key? key}) : super(key: key);
 
   @override
-  State<LostAnimalGeneralRegisterScreen> createState() =>
-      _LostAnimalGeneralRegisterScreenState();
+  State<FindAnimalGeneralRegisterScreen> createState() =>
+      _FindAnimalGeneralRegisterScreenState();
 }
 
-class _LostAnimalGeneralRegisterScreenState
-    extends State<LostAnimalGeneralRegisterScreen> {
+class _FindAnimalGeneralRegisterScreenState
+    extends State<FindAnimalGeneralRegisterScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _ageController = TextEditingController();
+  final TextEditingController _supostAgeController = TextEditingController();
   final TextEditingController _deficiencyController = TextEditingController();
   final TextEditingController _additionalFeaturesController =
       TextEditingController();
 
+  late String _collar;
   late String _deficiency;
   String? deficiencyYes;
   late String _animal;
@@ -47,7 +47,7 @@ class _LostAnimalGeneralRegisterScreenState
         child: Column(
           children: [
             BaseAppBar(
-              label: "Animal Perdido",
+              label: "Animal Encontrado",
               onPressed: () {
                 Navigator.popAndPushNamed(context, "/home-screen");
               },
@@ -68,18 +68,20 @@ class _LostAnimalGeneralRegisterScreenState
         key: _formKey,
         child: Column(
           children: [
-            AppTextFormField(
-              controller: _nameController,
-              keybordType: TextInputType.text,
-              label: "Nome:",
-              hintText: "Informe o nome do seu animal aqui...",
+            AppDropdown(
+              items: const [
+                "Sim",
+                "Não",
+              ],
+              hint: "Possui coleira?",
+              callback: _selectCollar,
             ),
             const SizedBox(height: 16),
             AppTextFormField(
-              controller: _ageController,
+              controller: _supostAgeController,
               keybordType: TextInputType.text,
-              label: "Idade:",
-              hintText: "Informe a idade do seu animal aqui...",
+              label: "Aparenta ter quantos anos:",
+              hintText: "Informe a idade animal aqui...",
             ),
             const SizedBox(height: 16),
             AppDropdown(
@@ -87,7 +89,7 @@ class _LostAnimalGeneralRegisterScreenState
                 "Sim",
                 "Não",
               ],
-              hint: "Possui alguma deficiência?",
+              hint: "Aparenta ter alguma deficiência?",
               callback: _selectDeficiency,
             ),
             Visibility(
@@ -97,7 +99,8 @@ class _LostAnimalGeneralRegisterScreenState
                   const SizedBox(height: 16),
                   AppTextFormField(
                     label: "Deficiência:",
-                    hintText: "Informe a deficiência do seu animal aqui...",
+                    hintText:
+                        "Informe a deficiência aparente do animal aqui...",
                     controller: _deficiencyController,
                     keybordType: TextInputType.text,
                   ),
@@ -216,7 +219,7 @@ class _LostAnimalGeneralRegisterScreenState
               controller: _additionalFeaturesController,
               keybordType: TextInputType.multiline,
               label: "Características adicionais:",
-              hintText: "Informe caracteristicas do seu animal aqui...",
+              hintText: "Informe caracteristicas do animal aqui...",
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 16),
@@ -267,6 +270,12 @@ class _LostAnimalGeneralRegisterScreenState
     });
 
     debugPrint(">>>>Animal: $_animal");
+  }
+
+  void _selectCollar(String collar) {
+    _collar = collar;
+
+    debugPrint(">>>>Gênero: $_collar");
   }
 
   void _selectGender(String gender) {
