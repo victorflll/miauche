@@ -4,8 +4,11 @@ import 'package:flutter/painting.dart';
 import 'package:flutter/services.dart';
 import 'package:miauche/ui/styles/app_colors.dart';
 import 'package:miauche/ui/widgets/app_text.dart';
-import 'package:miauche/ui/widgets/buttons/app_next_button.dart';
+import 'package:miauche/ui/widgets/appbar/base_appbar.dart';
+import 'package:miauche/ui/widgets/buttons/app_button.dart';
 import 'package:miauche/ui/widgets/fields/app_dropdown.dart';
+import 'package:miauche/ui/widgets/indicator/app_indicator.dart';
+import 'package:miauche/ui/widgets/fields/app_text_form_field.dart';
 
 class LostAnimalGeneralRegisterScreen extends StatefulWidget {
   const LostAnimalGeneralRegisterScreen({Key? key}) : super(key: key);
@@ -17,8 +20,19 @@ class LostAnimalGeneralRegisterScreen extends StatefulWidget {
 
 class _LostAnimalGeneralRegisterScreenState
     extends State<LostAnimalGeneralRegisterScreen> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _ageController = TextEditingController();
+  final TextEditingController _deficiencyController = TextEditingController();
+  final TextEditingController _additionalFeaturesController =
+      TextEditingController();
+
   late String _deficiency;
+  String? deficiencyYes;
   late String _animal;
+  String? animalDog;
+  String? animalCat;
   late String _gender;
   late String _dogBreed;
   late String _catBreed;
@@ -29,216 +43,228 @@ class _LostAnimalGeneralRegisterScreenState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const AppText(
-          label: "Miauche",
-          isBold: true,
-          color: AppColors.white,
-          fontSize: 20,
-        ),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-      ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          child: Container(
-            margin: const EdgeInsets.symmetric(horizontal: 24),
-            child: Column(
-              children: [
-                Container(
-                  margin: const EdgeInsets.symmetric(vertical: 32),
-                  child: const AppText(
-                    label: "Animal Perdido",
-                    fontSize: 36,
-                    color: AppColors.darkBlue,
-                    isBold: true,
-                  ),
-                ),
-                Form(
-                  child: Column(
-                    children: [
-                      TextFormField(
-                        keyboardType: TextInputType.text,
-                        decoration: const InputDecoration(
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: AppColors.white),
-                          ),
-                          labelText: "Nome:",
-                          fillColor: AppColors.white,
-                          filled: true,
-                          hintText: "Informe o nome do seu animal aqui...",
-                        ),
-                      ),
-                      const SizedBox(height: 16),
-                      TextFormField(
-                        keyboardType: TextInputType.text,
-                        decoration: const InputDecoration(
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: AppColors.white),
-                          ),
-                          labelText: "Idade:",
-                          fillColor: AppColors.white,
-                          filled: true,
-                          hintText: "Informe a idade do seu animal aqui...",
-                        ),
-                      ),
-                      const SizedBox(height: 16),
-                      AppDropdown(
-                        items: const [
-                          "Sim",
-                          "Não",
-                        ],
-                        hint: "Possui alguma deficiência?",
-                        callback: _selectDeficiency,
-                      ),
-                      const SizedBox(height: 16),
-                      TextFormField(
-                        keyboardType: TextInputType.text,
-                        decoration: const InputDecoration(
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: AppColors.white),
-                          ),
-                          labelText: "Deficiência:",
-                          fillColor: AppColors.white,
-                          filled: true,
-                          hintText:
-                              "Informe a deficiência do seu animal aqui...",
-                        ),
-                      ),
-                      const SizedBox(height: 16),
-                      AppDropdown(
-                        items: const [
-                          "Cachorro",
-                          "Gato",
-                        ],
-                        hint: "Animal:",
-                        callback: _selectAnimal,
-                      ),
-                      const SizedBox(height: 16),
-                      AppDropdown(
-                        items: const [
-                          "Fêmea",
-                          "Macho",
-                        ],
-                        hint: "Gênero:",
-                        callback: _selectGender,
-                      ),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      AppDropdown(
-                        items: const [
-                          "Vira-lata",
-                          "Angorá Turco",
-                          "Maine Coon",
-                          "Persa",
-                          "Siamês",
-                          "Ragdoll",
-                        ],
-                        hint: "Raça (Gato):",
-                        callback: _selectCatBreed,
-                      ),
-                      const SizedBox(height: 16),
-                      AppDropdown(
-                        items: const [
-                          "Vira-lata",
-                          "Shih-Tzu",
-                          "Yorkshire",
-                          "Poodle",
-                          "Lhasa Apso",
-                          "Buldogue Francês",
-                          "Maltês",
-                          "Golden Retriever",
-                          "Labrador",
-                          "Pug",
-                          "Dachshund(salsicha)",
-                          "Spitz Alemão",
-                          "Pinscher",
-                          "Schnauzer",
-                          "Beagle",
-                          "Cocker Spaniel",
-                          "Border Collie",
-                          "Buldogue Inglês",
-                          "Pit Bull",
-                          "Chow Chow",
-                        ],
-                        hint: "Raça (Cachorro):",
-                        callback: _selectDogBreed,
-                      ),
-                      const SizedBox(height: 16),
-                      AppDropdown(
-                        items: const [
-                          "Pequeno",
-                          "Médio",
-                          "Grande",
-                        ],
-                        hint: "Porte:",
-                        callback: _selectSizeAnimal,
-                      ),
-                      const SizedBox(height: 16),
-                      AppDropdown(
-                        items: const [
-                          "Curta",
-                          "Média",
-                          "Longa",
-                        ],
-                        hint: "Pelagem:",
-                        callback: _selectFur,
-                      ),
-                      const SizedBox(height: 16),
-                      AppDropdown(
-                        items: const [
-                          "Branca",
-                          "Preta",
-                          "Marrom",
-                          "Dourada",
-                          "Cinza",
-                          "Creme",
-                        ],
-                        hint: "Cor da Pelagem:",
-                        callback: _selectFurColor,
-                      ),
-                      const SizedBox(height: 16),
-                      TextFormField(
-                        keyboardType: TextInputType.multiline,
-                        decoration: const InputDecoration(
-                          enabledBorder: UnderlineInputBorder(
-                            borderSide: BorderSide(color: AppColors.white),
-                          ),
-                          labelText: "Características adicionais:",
-                          fillColor: AppColors.white,
-                          filled: true,
-                          hintText:
-                              "Informe caracteristicas do seu animal aqui...",
-                        ),
-                      ),
-                      const SizedBox(height: 16),
-                      AppNextButton(
-                        onPressed: () => {},
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            BaseAppBar(
+              label: "Animal Perdido",
+              onPressed: () {
+                Navigator.popAndPushNamed(context, "/home-screen");
+              },
             ),
-          ),
+            buildIndicator(),
+            buildTitle(),
+            buildBody(),
+          ],
         ),
       ),
     );
   }
 
+  Container buildBody() {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 24),
+      child: Form(
+        key: _formKey,
+        child: Column(
+          children: [
+            AppTextFormField(
+              controller: _nameController,
+              keybordType: TextInputType.text,
+              label: "Nome:",
+              hintText: "Informe o nome do seu animal aqui...",
+            ),
+            const SizedBox(height: 16),
+            AppTextFormField(
+              controller: _ageController,
+              keybordType: TextInputType.text,
+              label: "Idade:",
+              hintText: "Informe a idade do seu animal aqui...",
+            ),
+            const SizedBox(height: 16),
+            AppDropdown(
+              items: const [
+                "Sim",
+                "Não",
+              ],
+              hint: "Possui alguma deficiência?",
+              callback: _selectDeficiency,
+            ),
+            Visibility(
+              visible: deficiencyYes == "Sim",
+              child: Column(
+                children: [
+                  const SizedBox(height: 16),
+                  AppTextFormField(
+                    label: "Deficiência:",
+                    hintText: "Informe a deficiência do seu animal aqui...",
+                    controller: _deficiencyController,
+                    keybordType: TextInputType.text,
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 16),
+            AppDropdown(
+              items: const [
+                "Cachorro",
+                "Gato",
+              ],
+              hint: "Animal:",
+              callback: _selectAnimal,
+            ),
+            Visibility(
+              visible: animalDog == "Cachorro",
+              child: Column(
+                children: [
+                  const SizedBox(height: 16),
+                  AppDropdown(
+                    items: const [
+                      "Vira-lata",
+                      "Shih-Tzu",
+                      "Yorkshire",
+                      "Poodle",
+                      "Lhasa Apso",
+                      "Buldogue Francês",
+                      "Maltês",
+                      "Golden Retriever",
+                      "Labrador",
+                      "Pug",
+                      "Dachshund(salsicha)",
+                      "Spitz Alemão",
+                      "Pinscher",
+                      "Schnauzer",
+                      "Beagle",
+                      "Cocker Spaniel",
+                      "Border Collie",
+                      "Buldogue Inglês",
+                      "Pit Bull",
+                      "Chow Chow",
+                      "Desconhecida",
+                    ],
+                    hint: "Raça (Cachorro):",
+                    callback: _selectDogBreed,
+                  ),
+                ],
+              ),
+            ),
+            Visibility(
+              visible: animalCat == "Gato",
+              child: Column(
+                children: [
+                  const SizedBox(height: 16),
+                  AppDropdown(
+                    items: const [
+                      "Vira-lata",
+                      "Angorá Turco",
+                      "Maine Coon",
+                      "Persa",
+                      "Siamês",
+                      "Ragdoll",
+                      "Desconhecida"
+                    ],
+                    hint: "Raça (Gato):",
+                    callback: _selectCatBreed,
+                  ),
+                ],
+              ),
+            ),
+            const SizedBox(height: 16),
+            AppDropdown(
+              items: const [
+                "Fêmea",
+                "Macho",
+              ],
+              hint: "Gênero:",
+              callback: _selectGender,
+            ),
+            const SizedBox(height: 16),
+            AppDropdown(
+              items: const [
+                "Pequeno",
+                "Médio",
+                "Grande",
+              ],
+              hint: "Porte:",
+              callback: _selectSizeAnimal,
+            ),
+            const SizedBox(height: 16),
+            AppDropdown(
+              items: const [
+                "Curta",
+                "Média",
+                "Longa",
+              ],
+              hint: "Pelagem:",
+              callback: _selectFur,
+            ),
+            const SizedBox(height: 16),
+            AppDropdown(
+              items: const [
+                "Branca",
+                "Preta",
+                "Marrom",
+                "Dourada",
+                "Cinza",
+                "Creme",
+              ],
+              hint: "Cor da Pelagem:",
+              callback: _selectFurColor,
+            ),
+            const SizedBox(height: 16),
+            AppTextFormField(
+              controller: _additionalFeaturesController,
+              keybordType: TextInputType.multiline,
+              label: "Características adicionais:",
+              hintText: "Informe caracteristicas do seu animal aqui...",
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 16),
+              child: AppButton(
+                text: "Próximo",
+                onPressed: () => {},
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Padding buildTitle() {
+    return const Padding(
+      padding: EdgeInsets.all(16),
+      child: AppText(
+        label: "Geral",
+        fontSize: 36,
+        color: AppColors.darkBlue,
+        isBold: true,
+      ),
+    );
+  }
+
+  Container buildIndicator() {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 24),
+      child: const AppIndicator(selectedGeneral: true),
+    );
+  }
+
   void _selectDeficiency(String deficiency) {
     _deficiency = deficiency;
+    setState(() {
+      deficiencyYes = deficiency;
+    });
 
     debugPrint(">>>>Deficiency: $_deficiency");
   }
 
   void _selectAnimal(String animal) {
     _animal = animal;
+    setState(() {
+      animalDog = animal;
+      animalCat = animal;
+    });
 
     debugPrint(">>>>Animal: $_animal");
   }

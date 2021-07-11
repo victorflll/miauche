@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:miauche/ui/styles/app_colors.dart';
 import 'package:miauche/ui/widgets/app_text.dart';
-import 'package:miauche/ui/widgets/base_appbar.dart';
+import 'package:miauche/ui/widgets/appbar/base_appbar.dart';
 import 'package:miauche/ui/widgets/buttons/app_button.dart';
 import 'package:miauche/ui/widgets/fields/app_text_form_field.dart';
 

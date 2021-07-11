@@ -22,6 +22,7 @@ class _AppPasswordFormFieldState extends State<AppPasswordFormField> {
   @override
   Widget build(BuildContext context) {
     return AppTextFormField(
+      maxLength: 8,
       controller: widget.controller,
       keybordType: TextInputType.visiblePassword,
       label: "Senha",

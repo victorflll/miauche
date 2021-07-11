@@ -35,13 +35,28 @@ class AppTextFormField extends StatelessWidget {
             } else if (text.length > maxLength) {
               return "Você ultrapassou o limite de caracteres!";
             }
-
             return null;
           },
       controller: controller,
       keyboardType: keybordType,
       obscureText: obscureText,
+      style: const TextStyle(
+        fontSize: 16,
+        color: Colors.black,
+        fontFamily: "Poppins",
+      ),
       decoration: InputDecoration(
+        labelStyle: const TextStyle(
+          fontSize: 16,
+          fontFamily: "Poppins",
+          color: Colors.black,
+        ),
+        hintStyle: const TextStyle(
+          fontSize: 14,
+          color: Colors.black,
+          fontFamily: "Poppins",
+        ),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 8),
         labelText: label,
         fillColor: AppColors.background,
         hintText: hintText,

@@ -23,10 +23,10 @@ class ChooseRegisterAnimalScreen extends StatelessWidget {
             color: AppColors.violet,
           ),
           onPressed: () {
-            Navigator.pushNamed(
+            /*Navigator.pushNamed(
               context,
               "/find-animal-general-register-screen",
-            );
+            );*/
           },
         ),
         CupertinoDialogAction(

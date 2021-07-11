@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:miauche/ui/styles/app_colors.dart';
 
-import 'app_text.dart';
+import '../app_text.dart';
 
 class BaseAppBar extends StatelessWidget {
   final String label;
   final IconData? icon;
+  final VoidCallback? onPressed;
 
   const BaseAppBar({
     Key? key,
     required this.label,
     this.icon,
+    this.onPressed,
   }) : super(key: key);
 
   @override
@@ -24,9 +26,10 @@ class BaseAppBar extends StatelessWidget {
       ),
       leading: IconButton(
         icon: Icon(icon ?? Icons.arrow_back_ios),
-        onPressed: () {
-          Navigator.pop(context);
-        },
+        onPressed: onPressed ??
+            () {
+              Navigator.pop(context);
+            },
       ),
     );
   }
