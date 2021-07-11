@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:miauche/ui/screens/home_screen.dart';
+import 'package:miauche/ui/screens/login_screen.dart';
+import 'package:miauche/ui/screens/animal/lost/lost_animal_general_register_screen.dart';
+import 'package:miauche/ui/screens/user/user_register_screen.dart';
 import 'package:miauche/ui/styles/app_theme.dart';
 
 void main() {
@@ -20,75 +24,19 @@ class MyApp extends StatelessWidget {
       title: 'Miauche',
       debugShowCheckedModeBanner: false,
       theme: AppThemes.generalTheme,
-      home: const MyHomePage(title: 'Miauche'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  void _decrementCounter() {
-    setState(() {
-      _counter--;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.redAccent.shade700,
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'Mais (+) para incrementar e Menos (-) para decrementar',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                FloatingActionButton(
-                  onPressed: _incrementCounter,
-                  tooltip: 'Incremento',
-                  child: const Icon(Icons.add),
-                  backgroundColor: Colors.redAccent.shade700,
-                ),
-                const SizedBox(width: 16),
-                FloatingActionButton(
-                  onPressed: _decrementCounter,
-                  tooltip: 'Decremento',
-                  child: const Icon(Icons.remove),
-                  backgroundColor: Colors.redAccent.shade700,
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const LoginScreen(),
+        '/user-register-screen': (context) => UserRegisterScreen(),
+        '/home-screen': (context) => const HomeScreen(),
+        '/lost-animal-general-register-screen': (context) =>
+            const LostAnimalGeneralRegisterScreen(),
+        //'/lost-animal-adress-register-screen': (context) => const LostAnimalAdressRegisterScreen(),
+        //'/lost-animal-appeal-register-screen': (context) => const LostAnimalAppealRegisterScreen(),
+        //'/find-animal-general-register-screen': (context) => const FindAnimalGeneralRegisterScreen(),
+        //'/find-animal-adress-register-screen': (context) => const FindAnimalAdressRegisterScreen(),
+        //'/find-animal-appeal-register-screen': (context) => const FindAnimalAppealRegisterScreen(),
+      },
     );
   }
 }
