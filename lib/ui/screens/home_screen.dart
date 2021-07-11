@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:miauche/ui/screens/animal/choose_register_animal_screen.dart';
 import 'package:miauche/ui/styles/app_colors.dart';
 import 'package:miauche/ui/widgets/app_text.dart';
 
@@ -93,7 +94,10 @@ class HomeScreen extends StatelessWidget {
   TextButton buildRegisterAnimalButton(BuildContext context) {
     return TextButton(
       onPressed: () {
-        Navigator.pushNamed(context, "/choose-register-animal-screen");
+        showDialog(
+          context: context,
+          builder: (_) => const ChooseRegisterAnimalScreen(),
+        );
       },
       child: Column(
         children: const [

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:miauche/ui/screens/animal/choose_register_animal_screen.dart';
 import 'package:miauche/ui/screens/home_screen.dart';
 import 'package:miauche/ui/screens/login_screen.dart';
 import 'package:miauche/ui/screens/animal/lost/lost_animal_general_register_screen.dart';
@@ -30,8 +29,6 @@ class MyApp extends StatelessWidget {
         '/': (context) => const LoginScreen(),
         '/user-register-screen': (context) => UserRegisterScreen(),
         '/home-screen': (context) => const HomeScreen(),
-        '/choose-register-animal-screen': (context) =>
-            const ChooseRegisterAnimalScreen(),
         '/lost-animal-general-register-screen': (context) =>
             const LostAnimalGeneralRegisterScreen(),
         //'/lost-animal-adress-register-screen': (context) => const LostAnimalAdressRegisterScreen(),
