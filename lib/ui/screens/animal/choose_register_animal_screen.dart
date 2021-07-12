@@ -19,25 +19,27 @@ class ChooseRegisterAnimalScreen extends StatelessWidget {
       actions: [
         CupertinoDialogAction(
           child: const AppText(
-            label: "Encontrado",
-            color: AppColors.violet,
-          ),
-          onPressed: () {
-            Navigator.pushNamed(
-              context,
-              "/find-animal-general-register-screen",
-            );
-          },
-        ),
-        CupertinoDialogAction(
-          child: const AppText(
             label: "Perdido",
             color: AppColors.violet,
+            isBold: true,
           ),
           onPressed: () {
             Navigator.pushNamed(
               context,
               "/lost-animal-general-register-screen",
+            );
+          },
+        ),
+        CupertinoDialogAction(
+          child: const AppText(
+            label: "Encontrado",
+            color: AppColors.violet,
+            isBold: true,
+          ),
+          onPressed: () {
+            Navigator.pushNamed(
+              context,
+              "/find-animal-general-register-screen",
             );
           },
         ),

@@ -58,7 +58,7 @@ class _LoginScreenState extends State<LoginScreen> {
           child: Container(
             width: double.infinity,
             decoration: const BoxDecoration(
-              color: Colors.white,
+              color: AppColors.background,
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(32),
                 topRight: Radius.circular(32),
@@ -137,6 +137,7 @@ class _LoginScreenState extends State<LoginScreen> {
             ),
             AppButton(
               text: "Entrar",
+              icon: Icons.login,
               onPressed: () => {
                 Navigator.pushNamed(context, "/home-screen"),
               },

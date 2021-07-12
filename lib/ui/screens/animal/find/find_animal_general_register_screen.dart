@@ -47,7 +47,7 @@ class _FindAnimalGeneralRegisterScreenState
         child: Column(
           children: [
             BaseAppBar(
-              label: "Animal Encontrado",
+              label: "Cadastro de Animal",
               onPressed: () {
                 Navigator.popAndPushNamed(context, "/home-screen");
               },
@@ -221,15 +221,25 @@ class _FindAnimalGeneralRegisterScreenState
               label: "Características adicionais:",
               hintText: "Informe caracteristicas do animal aqui...",
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16),
-              child: AppButton(
-                text: "Próximo",
-                onPressed: () => {},
-              ),
-            ),
+            buildNextButton(),
           ],
         ),
+      ),
+    );
+  }
+
+  Padding buildNextButton() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 16),
+      child: AppButton(
+        text: "Próximo",
+        icon: Icons.arrow_forward,
+        onPressed: () => {
+          Navigator.pushNamed(
+            context,
+            "/find-animal-adress-register-screen",
+          ),
+        },
       ),
     );
   }
@@ -238,7 +248,7 @@ class _FindAnimalGeneralRegisterScreenState
     return const Padding(
       padding: EdgeInsets.all(16),
       child: AppText(
-        label: "Cadastro",
+        label: "Encontrado",
         fontSize: 36,
         color: AppColors.darkBlue,
         isBold: true,

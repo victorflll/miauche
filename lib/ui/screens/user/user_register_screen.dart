@@ -25,76 +25,85 @@ class UserRegisterScreen extends StatelessWidget {
           child: Column(
             children: [
               const BaseAppBar(label: "Cadastro"),
-              const SizedBox(height: 36),
-              const AppText(
-                label: "Usuário",
-                fontSize: 36,
-                isBold: true,
-                color: AppColors.darkBlue,
-                letterSpacing: 1.5,
-              ),
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 32),
-                child: Form(
-                  key: _formKey,
-                  child: Column(
-                    children: [
-                      const SizedBox(height: 24),
-                      AppTextFormField(
-                        controller: _emailController,
-                        keybordType: TextInputType.emailAddress,
-                        label: "Nome:",
-                        hintText: "Digite seu nome completo aqui...",
-                        prefixIcon: const Icon(
-                          Icons.email,
-                          color: AppColors.violet,
-                        ),
-                      ),
-                      const SizedBox(height: 16),
-                      AppTextFormField(
-                        controller: _passwordController,
-                        keybordType: TextInputType.visiblePassword,
-                        label: "Senha:",
-                        hintText: "Digite uma senha aqui...",
-                        prefixIcon: const Icon(
-                          Icons.lock_rounded,
-                          color: AppColors.violet,
-                        ),
-                      ),
-                      const SizedBox(height: 16),
-                      AppTextFormField(
-                        controller: _passwordAgainController,
-                        keybordType: TextInputType.visiblePassword,
-                        label: "Confirmação de senha:",
-                        hintText: "Repita a senha aqui...",
-                        prefixIcon: const Icon(
-                          Icons.lock_rounded,
-                          color: AppColors.violet,
-                        ),
-                      ),
-                      const SizedBox(height: 16),
-                      AppTextFormField(
-                        controller: _phoneController,
-                        keybordType: TextInputType.number,
-                        label: "Telefone:",
-                        hintText: "Informe seu telefone para contato aqui...",
-                        prefixIcon: const Icon(
-                          Icons.phone,
-                          color: AppColors.violet,
-                        ),
-                      ),
-                      const SizedBox(height: 16),
-                      AppButton(
-                        text: "Concluir cadastro",
-                        onPressed: () {},
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              buildTitle(),
+              buildForm(),
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Container buildForm() {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 32),
+      child: Form(
+        key: _formKey,
+        child: Column(
+          children: [
+            AppTextFormField(
+              controller: _emailController,
+              keybordType: TextInputType.emailAddress,
+              label: "Nome:",
+              hintText: "Digite seu nome completo aqui...",
+              prefixIcon: const Icon(
+                Icons.email,
+                color: AppColors.violet,
+              ),
+            ),
+            const SizedBox(height: 16),
+            AppTextFormField(
+              controller: _passwordController,
+              keybordType: TextInputType.visiblePassword,
+              label: "Senha:",
+              hintText: "Digite uma senha aqui...",
+              prefixIcon: const Icon(
+                Icons.lock_rounded,
+                color: AppColors.violet,
+              ),
+            ),
+            const SizedBox(height: 16),
+            AppTextFormField(
+              controller: _passwordAgainController,
+              keybordType: TextInputType.visiblePassword,
+              label: "Confirmação de senha:",
+              hintText: "Repita a senha aqui...",
+              prefixIcon: const Icon(
+                Icons.lock_rounded,
+                color: AppColors.violet,
+              ),
+            ),
+            const SizedBox(height: 16),
+            AppTextFormField(
+              controller: _phoneController,
+              keybordType: TextInputType.number,
+              label: "Telefone:",
+              hintText: "Informe seu telefone para contato aqui...",
+              prefixIcon: const Icon(
+                Icons.phone,
+                color: AppColors.violet,
+              ),
+            ),
+            const SizedBox(height: 16),
+            AppButton(
+              text: "Concluir cadastro",
+              icon: Icons.done,
+              onPressed: () {},
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Padding buildTitle() {
+    return const Padding(
+      padding: EdgeInsets.all(32),
+      child: AppText(
+        label: "Usuário",
+        fontSize: 36,
+        color: AppColors.darkBlue,
+        isBold: true,
       ),
     );
   }

@@ -28,6 +28,7 @@ class _LostAnimalGeneralRegisterScreenState
   final TextEditingController _additionalFeaturesController =
       TextEditingController();
 
+  late String _collar;
   late String _deficiency;
   String? deficiencyYes;
   late String _animal;
@@ -47,21 +48,21 @@ class _LostAnimalGeneralRegisterScreenState
         child: Column(
           children: [
             BaseAppBar(
-              label: "Animal Perdido",
+              label: "Cadastro de Animal",
               onPressed: () {
                 Navigator.popAndPushNamed(context, "/home-screen");
               },
             ),
             buildIndicator(),
             buildTitle(),
-            buildBody(),
+            buildForm(),
           ],
         ),
       ),
     );
   }
 
-  Container buildBody() {
+  Container buildForm() {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 24),
       child: Form(
@@ -80,6 +81,15 @@ class _LostAnimalGeneralRegisterScreenState
               keybordType: TextInputType.text,
               label: "Idade:",
               hintText: "Informe a idade do seu animal aqui...",
+            ),
+            const SizedBox(height: 16),
+            AppDropdown(
+              items: const [
+                "Sim",
+                "Não",
+              ],
+              hint: "Possui coleira?",
+              callback: _selectCollar,
             ),
             const SizedBox(height: 16),
             AppDropdown(
@@ -218,15 +228,25 @@ class _LostAnimalGeneralRegisterScreenState
               label: "Características adicionais:",
               hintText: "Informe caracteristicas do seu animal aqui...",
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 16),
-              child: AppButton(
-                text: "Próximo",
-                onPressed: () => {},
-              ),
-            ),
+            buildNextButton(),
           ],
         ),
+      ),
+    );
+  }
+
+  Padding buildNextButton() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 16),
+      child: AppButton(
+        text: "Próximo",
+        icon: Icons.arrow_forward,
+        onPressed: () => {
+          Navigator.pushNamed(
+            context,
+            "/lost-animal-adress-register-screen",
+          ),
+        },
       ),
     );
   }
@@ -235,7 +255,7 @@ class _LostAnimalGeneralRegisterScreenState
     return const Padding(
       padding: EdgeInsets.all(16),
       child: AppText(
-        label: "Geral",
+        label: "Perdido",
         fontSize: 36,
         color: AppColors.darkBlue,
         isBold: true,
@@ -248,6 +268,12 @@ class _LostAnimalGeneralRegisterScreenState
       margin: const EdgeInsets.symmetric(horizontal: 24),
       child: const AppIndicator(selectedGeneral: true),
     );
+  }
+
+  void _selectCollar(String collar) {
+    _collar = collar;
+
+    debugPrint(">>>>Gênero: $_collar");
   }
 
   void _selectDeficiency(String deficiency) {

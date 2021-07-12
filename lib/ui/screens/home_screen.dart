@@ -10,14 +10,18 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: Builder(builder: (context) {
-        return FloatingActionButton(
-          onPressed: () => Scaffold.of(context).openDrawer(),
-          child: const Icon(Icons.menu),
-          backgroundColor: AppColors.violet,
-        );
+        return buildCallDrawer(context);
       }),
       drawer: buildDrawer(context),
       body: buildBody(context),
+    );
+  }
+
+  FloatingActionButton buildCallDrawer(BuildContext context) {
+    return FloatingActionButton(
+      onPressed: () => Scaffold.of(context).openDrawer(),
+      child: const Icon(Icons.menu),
+      backgroundColor: AppColors.violet,
     );
   }
 

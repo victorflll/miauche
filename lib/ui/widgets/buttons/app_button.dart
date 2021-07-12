@@ -10,6 +10,7 @@ class AppButton extends StatelessWidget {
   final Color buttonColor;
   final double height;
   final VoidCallback onPressed;
+  final IconData? icon;
 
   const AppButton({
     Key? key,
@@ -18,6 +19,7 @@ class AppButton extends StatelessWidget {
     this.buttonColor = AppColors.darkBlue,
     this.height = 50,
     required this.onPressed,
+    this.icon,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -29,9 +31,16 @@ class AppButton extends StatelessWidget {
           primary: buttonColor,
           minimumSize: Size(double.maxFinite, height),
         ),
-        child: AppText(
-          label: text,
-          color: textColor,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            AppText(
+              label: text,
+              color: textColor,
+            ),
+            const SizedBox(width: 8),
+            Icon(icon),
+          ],
         ),
         onPressed: onPressed,
       ),
