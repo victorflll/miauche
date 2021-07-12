@@ -8,7 +8,7 @@ class ChooseRegisterAnimalScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoAlertDialog(
+    return AlertDialog(
       title: const AppText(
         label: "Cadastro de Animal",
         isBold: true,
