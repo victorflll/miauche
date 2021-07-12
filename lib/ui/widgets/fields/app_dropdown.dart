@@ -48,6 +48,7 @@ class _AppDropdownState extends State<AppDropdown> {
               value: item,
               child: AppText(
                 label: item,
+                color: Colors.grey.shade800,
               ),
             );
           }).toList(),

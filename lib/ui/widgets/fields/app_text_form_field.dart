@@ -40,9 +40,9 @@ class AppTextFormField extends StatelessWidget {
       controller: controller,
       keyboardType: keybordType,
       obscureText: obscureText,
-      style: const TextStyle(
+      style: TextStyle(
         fontSize: 16,
-        color: Colors.black,
+        color: Colors.grey.shade800,
         fontFamily: "Poppins",
       ),
       decoration: InputDecoration(

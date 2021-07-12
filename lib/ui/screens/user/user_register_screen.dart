@@ -50,6 +50,7 @@ class UserRegisterScreen extends StatelessWidget {
                           color: AppColors.violet,
                         ),
                       ),
+                      const SizedBox(height: 16),
                       AppTextFormField(
                         controller: _passwordController,
                         keybordType: TextInputType.visiblePassword,
@@ -60,6 +61,7 @@ class UserRegisterScreen extends StatelessWidget {
                           color: AppColors.violet,
                         ),
                       ),
+                      const SizedBox(height: 16),
                       AppTextFormField(
                         controller: _passwordAgainController,
                         keybordType: TextInputType.visiblePassword,
@@ -70,6 +72,7 @@ class UserRegisterScreen extends StatelessWidget {
                           color: AppColors.violet,
                         ),
                       ),
+                      const SizedBox(height: 16),
                       AppTextFormField(
                         controller: _phoneController,
                         keybordType: TextInputType.number,
@@ -80,6 +83,7 @@ class UserRegisterScreen extends StatelessWidget {
                           color: AppColors.violet,
                         ),
                       ),
+                      const SizedBox(height: 16),
                       AppButton(
                         text: "Concluir cadastro",
                         onPressed: () {},
