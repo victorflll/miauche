@@ -95,6 +95,8 @@ class UserRegisterScreen extends StatelessWidget {
                 Icons.phone,
                 color: AppColors.violet,
               ),
+              filter: {"#": RegExp(r'[0-9]')},
+              mask: '(##) #####-####',
             ),
             const SizedBox(height: 16),
             AppButton(

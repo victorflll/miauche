@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 import 'package:miauche/ui/styles/app_colors.dart';
 
 class AppTextFormField extends StatelessWidget {
@@ -11,6 +12,8 @@ class AppTextFormField extends StatelessWidget {
   final bool obscureText;
   final FormFieldValidator<String>? validator;
   final int maxLength;
+  final String? mask;
+  final Map<String, RegExp>? filter;
 
   const AppTextFormField({
     Key? key,
@@ -23,6 +26,8 @@ class AppTextFormField extends StatelessWidget {
     this.suffixIcon,
     this.validator,
     this.maxLength = 100,
+    this.mask,
+    this.filter,
   }) : super(key: key);
 
   @override
@@ -45,8 +50,15 @@ class AppTextFormField extends StatelessWidget {
         color: Colors.grey.shade800,
         fontFamily: "Poppins",
       ),
+      inputFormatters: [
+        MaskTextInputFormatter(
+          mask: mask,
+          filter: filter,
+        ),
+      ],
       decoration: InputDecoration(
         labelStyle: const TextStyle(
+          height: 1,
           fontSize: 16,
           fontFamily: "Poppins",
           color: Colors.black,

@@ -216,6 +216,8 @@ class _LostAnimalAdressRegisterScreenState
             keybordType: TextInputType.number,
             label: "CEP",
             hintText: "Digite seu CEP aqui...",
+            filter: {"#": RegExp(r'[0-9]')},
+            mask: '#####-###',
           ),
         ),
         const SizedBox(width: 16),

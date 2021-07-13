@@ -20,45 +20,66 @@ class AppDropdown extends StatefulWidget {
 
 class _AppDropdownState extends State<AppDropdown> {
   String? dropdownItem;
+  bool visible = false;
 
   @override
   Widget build(BuildContext context) {
     return Container(
       color: AppColors.background,
-      child: DropdownButtonHideUnderline(
-        child: DropdownButtonFormField(
-          decoration: const InputDecoration(
-            hintStyle: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-              fontFamily: "Poppins",
-            ),
-            contentPadding: EdgeInsets.symmetric(horizontal: 8),
-          ),
-          isExpanded: true,
-          dropdownColor: AppColors.white,
-          iconEnabledColor: AppColors.blue,
-          value: dropdownItem,
-          hint: AppText(
-            label: widget.hint,
-          ),
-          items: widget.items.map<DropdownMenuItem<String>>((String item) {
-            return DropdownMenuItem<String>(
-              value: item,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Visibility(
+            visible: visible,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 8),
               child: AppText(
-                label: item,
-                color: Colors.grey.shade800,
+                label: widget.hint,
+                fontSize: 13,
               ),
-            );
-          }).toList(),
-          onChanged: (String? newItem) {
-            setState(() {
-              dropdownItem = newItem!;
-              widget.callback(dropdownItem);
-            });
-          },
-        ),
+            ),
+          ),
+          DropdownButtonHideUnderline(
+            child: DropdownButtonFormField(
+              decoration: const InputDecoration(
+                hintStyle: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                  fontFamily: "Poppins",
+                ),
+                contentPadding: EdgeInsets.symmetric(horizontal: 8),
+              ),
+              isExpanded: true,
+              dropdownColor: AppColors.white,
+              iconEnabledColor: AppColors.blue,
+              value: dropdownItem,
+              hint: AppText(
+                label: widget.hint,
+              ),
+              items: widget.items.map<DropdownMenuItem<String>>((String item) {
+                return DropdownMenuItem<String>(
+                  value: item,
+                  child: AppText(
+                    label: item,
+                    color: Colors.grey.shade800,
+                  ),
+                );
+              }).toList(),
+              onChanged: (String? newItem) {
+                setState(() {
+                  dropdownItem = newItem!;
+                  widget.callback(dropdownItem);
+                  if (visible) {
+                    visible = false;
+                  } else {
+                    visible = true;
+                  }
+                });
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
