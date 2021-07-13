@@ -67,7 +67,7 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               children: [
                 const Padding(
-                  padding: EdgeInsets.only(top: 32),
+                  padding: EdgeInsets.only(top: 24),
                   child: AppText(
                     label: "Miauche",
                     isBold: true,
@@ -135,15 +135,36 @@ class _LoginScreenState extends State<LoginScreen> {
               controller: _passwordController,
               obscureText: true,
             ),
-            AppButton(
-              text: "Entrar",
-              icon: Icons.login,
-              onPressed: () => {
-                Navigator.pushNamed(context, "/home-screen"),
-              },
-            ),
+            buildForgetPasswordButton(),
+            buildLoginButton(),
             buildFooter(),
           ],
+        ),
+      ),
+    );
+  }
+
+  AppButton buildLoginButton() {
+    return AppButton(
+      text: "Entrar",
+      icon: Icons.login,
+      onPressed: () => {
+        Navigator.pushNamed(context, "/home-screen"),
+      },
+    );
+  }
+
+  Container buildForgetPasswordButton() {
+    return Container(
+      margin: const EdgeInsets.only(top: 16),
+      alignment: Alignment.centerRight,
+      child: GestureDetector(
+        onTap: () {},
+        child: const AppText(
+          label: "Esqueceu a senha?",
+          color: AppColors.darkBlue,
+          fontSize: 14,
+          isBold: true,
         ),
       ),
     );
@@ -191,25 +212,29 @@ class _LoginScreenState extends State<LoginScreen> {
             ],
           ),
         ),
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const AppText(
-              label: "Não tem conta ainda?",
-            ),
-            const SizedBox(width: 8),
-            GestureDetector(
-              onTap: () {
-                Navigator.pushNamed(context, "/user-register-screen");
-              },
-              child: const AppText(
-                label: "Cadastre-se",
-                color: AppColors.darkBlue,
-                isBold: true,
-              ),
-            ),
-          ],
+        buildRegisterButton(),
+      ],
+    );
+  }
+
+  Row buildRegisterButton() {
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const AppText(
+          label: "Não tem conta ainda?",
+        ),
+        const SizedBox(width: 8),
+        GestureDetector(
+          onTap: () {
+            Navigator.pushNamed(context, "/user-register-screen");
+          },
+          child: const AppText(
+            label: "Cadastre-se",
+            color: AppColors.darkBlue,
+            isBold: true,
+          ),
         ),
       ],
     );
