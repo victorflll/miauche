@@ -13,6 +13,7 @@ class UserRegisterScreen extends StatelessWidget {
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _passwordAgainController =
       TextEditingController();
+  final TextEditingController _nameController = TextEditingController();
 
   UserRegisterScreen({Key? key}) : super(key: key);
 
@@ -42,10 +43,21 @@ class UserRegisterScreen extends StatelessWidget {
         child: Column(
           children: [
             AppTextFormField(
+              controller: _nameController,
+              keybordType: TextInputType.name,
+              label: "Nome:",
+              hintText: "Digite seu nome aqui...",
+              prefixIcon: const Icon(
+                Icons.person,
+                color: AppColors.violet,
+              ),
+            ),
+            const SizedBox(height: 16),
+            AppTextFormField(
               controller: _emailController,
               keybordType: TextInputType.emailAddress,
-              label: "Nome:",
-              hintText: "Digite seu nome completo aqui...",
+              label: "Email:",
+              hintText: "Digite seu email aqui...",
               prefixIcon: const Icon(
                 Icons.email,
                 color: AppColors.violet,

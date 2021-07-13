@@ -1,7 +1,10 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:miauche/ui/styles/app_colors.dart';
 import 'package:miauche/ui/widgets/app_text.dart';
 import 'package:miauche/ui/widgets/appbar/base_appbar.dart';
+import 'package:miauche/ui/widgets/buttons/app_button.dart';
+import 'package:miauche/ui/widgets/fields/app_text_form_field.dart';
 import 'package:miauche/ui/widgets/indicator/app_indicator.dart';
 
 class FindAnimalAdressRegisterScreen extends StatefulWidget {
@@ -14,6 +17,19 @@ class FindAnimalAdressRegisterScreen extends StatefulWidget {
 
 class _FindAnimalAdressRegisterScreenState
     extends State<FindAnimalAdressRegisterScreen> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final TextEditingController _cepController = TextEditingController();
+  final TextEditingController _districtController = TextEditingController();
+  final TextEditingController _streetController = TextEditingController();
+  final TextEditingController _numberController = TextEditingController();
+  final TextEditingController _cityController = TextEditingController();
+  final TextEditingController _complementController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +39,7 @@ class _FindAnimalAdressRegisterScreenState
             const BaseAppBar(label: "Cadastro de Animal"),
             buildIndicator(),
             buildTitle(),
-            buildBody(),
+            buildForm(),
           ],
         ),
       ),
@@ -49,11 +65,101 @@ class _FindAnimalAdressRegisterScreenState
     );
   }
 
-  Container buildBody() {
-    return Container();
+  Container buildForm() {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 32),
+      child: Form(
+        key: _formKey,
+        child: Column(
+          children: [
+            const AppText(
+              label: "Endereço do acolhedor",
+              fontSize: 24,
+              color: AppColors.darkBlue,
+            ),
+            const SizedBox(height: 16),
+            buildSearchCEP(),
+            const SizedBox(height: 16),
+            AppTextFormField(
+              controller: _cityController,
+              keybordType: TextInputType.text,
+              label: "Cidade:",
+              hintText: "Digite sua cidade aqui...",
+            ),
+            const SizedBox(height: 16),
+            AppTextFormField(
+              controller: _districtController,
+              keybordType: TextInputType.text,
+              label: "Bairro:",
+              hintText: "Digite seu bairro aqui...",
+            ),
+            const SizedBox(height: 16),
+            Row(
+              children: [
+                Expanded(
+                  flex: 3,
+                  child: AppTextFormField(
+                    controller: _streetController,
+                    keybordType: TextInputType.text,
+                    label: "Rua:",
+                    hintText: "Digite sua rua aqui...",
+                  ),
+                ),
+                const SizedBox(width: 16),
+                Expanded(
+                  flex: 1,
+                  child: AppTextFormField(
+                    controller: _numberController,
+                    keybordType: TextInputType.number,
+                    label: "Nº:",
+                    hintText: "Número da residência...",
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 16),
+            AppTextFormField(
+              controller: _complementController,
+              keybordType: TextInputType.multiline,
+              label: "Complemento:",
+              hintText: "Digite algum ponto de referência aqui...",
+            ),
+            buildNextButton(),
+          ],
+        ),
+      ),
+    );
   }
 
-  /*Padding buildNextButton() {
+  Row buildSearchCEP() {
+    return Row(
+      children: [
+        Expanded(
+          flex: 4,
+          child: AppTextFormField(
+            controller: _cepController,
+            keybordType: TextInputType.number,
+            label: "CEP",
+            hintText: "Digite seu CEP aqui...",
+          ),
+        ),
+        const SizedBox(width: 16),
+        Expanded(
+          flex: 1,
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              shape: const StadiumBorder(),
+              primary: AppColors.darkBlue,
+            ),
+            child: const Icon(Icons.search),
+            onPressed: () {},
+          ),
+        ),
+      ],
+    );
+  }
+
+  Padding buildNextButton() {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 16),
       child: AppButton(
@@ -67,5 +173,5 @@ class _FindAnimalAdressRegisterScreenState
         },
       ),
     );
-  }*/
+  }
 }
