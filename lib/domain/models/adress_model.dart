@@ -7,7 +7,8 @@ class Adress {
       late String houseNumber;
       late String complement;
 
-      Adress (this.CEP, this.city, this.neighborhood, this.street, this.houseNumber, this.complement);
+      Adress ({required this.CEP, required this.city, required this.neighborhood, 
+               required this.street, required this.houseNumber, required this.complement});
 
       Map toMap() {
               Map data = {};
@@ -25,7 +26,7 @@ class Adress {
       Adress.fromMap(Map data) {
              this.CEP = data['CEP'];
              this.city = data['city'];
-             this.neighborhood = data['cineighborhoodty'];
+             this.neighborhood = data['neighborhood'];
              this.street = data['street'];
              this.houseNumber = data['houseNumber'];
              this.complement = data['complement'];
