@@ -7,11 +7,12 @@ class LostAnimal {
   late Animal animal;
   late bool anotherPlace;
   late Adress adress;
-  late bool anotherPlaceAdress;
+  late Adress anotherPlaceAdress;
   late String newsName;
   late String description;
-  late double reward;
+  late String reward;
   late File imageAnimal;
+  late String imagePath;
 
   LostAnimal(
       {required this.animal,
@@ -21,7 +22,8 @@ class LostAnimal {
       required this.newsName,
       required this.description,
       required this.reward,
-      required this.imageAnimal});
+      required this.imageAnimal,
+      required this.imagePath});
 
   Map toMap() {
     Map data = {};
@@ -34,6 +36,7 @@ class LostAnimal {
     data['description'] = this.description;
     data['reward'] = this.reward;
     data['imageAnimal'] = this.imageAnimal;
+    data['imagePath'] = this.imagePath;
 
     return data;
   }
@@ -47,5 +50,6 @@ class LostAnimal {
     this.description = data['description'];
     this.reward = data['reward'];
     this.imageAnimal = data['imageAnimal'];
+    this.imagePath = data['imagePath'];
   }
 }
