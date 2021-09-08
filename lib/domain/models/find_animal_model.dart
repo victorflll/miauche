@@ -9,14 +9,15 @@ class FindAnimal {
   late String newsName;
   late String description;
   late File imageAnimal;
+  late String imagePath;
 
   FindAnimal(
       {required this.animal,
-      required this.adress, 
+      required this.adress,
       required this.newsName,
       required this.description,
-      required this.imageAnimal}
-  );
+      required this.imageAnimal,
+      required this.imagePath});
 
   Map toMap() {
     Map data = {};
@@ -26,6 +27,7 @@ class FindAnimal {
     data['newsName'] = this.newsName;
     data['description'] = this.description;
     data['imageAnimal'] = this.imageAnimal;
+    data['imagePath'] = this.imagePath;
 
     return data;
   }
@@ -36,5 +38,6 @@ class FindAnimal {
     this.newsName = data['newsName'];
     this.description = data['description'];
     this.imageAnimal = data['imageAnimal'];
+    this.imagePath = data['imagePath'];
   }
 }
