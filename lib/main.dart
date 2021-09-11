@@ -3,6 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:miauche/ui/screens/animal/find/find_animal_adress_register_screen.dart';
 import 'package:miauche/ui/screens/animal/find/find_animal_appeal_register_screen.dart';
 import 'package:miauche/ui/screens/animal/find/find_animal_general_register_screen.dart';
+import 'package:miauche/ui/screens/animal/find/list_find_animals_screen.dart';
+import 'package:miauche/ui/screens/animal/lost/list_lost_animals_screen.dart';
 import 'package:miauche/ui/screens/animal/lost/lost_animal_adress_register_screen.dart';
 import 'package:miauche/ui/screens/animal/lost/lost_animal_appeal_register_screen.dart';
 import 'package:miauche/ui/screens/home_screen.dart';
@@ -34,6 +36,8 @@ class MyApp extends StatelessWidget {
         '/': (context) => const LoginScreen(),
         '/user-register-screen': (context) => UserRegisterScreen(),
         '/home-screen': (context) => const HomeScreen(),
+        '/list-find-animals-screen': (context) => const ListFindAnimalsScreen(),
+        '/list-lost-animals-screen': (context) => const ListLostAnimalsScreen(),
         '/lost-animal-general-register-screen': (context) =>
             const LostAnimalGeneralRegisterScreen(),
         '/lost-animal-adress-register-screen': (context) =>
