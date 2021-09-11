@@ -87,12 +87,16 @@ class HomeScreen extends StatelessWidget {
               buildListButton(
                 label: "Animais\nPerdidos",
                 imagePath: "assets/images/cat-lost.png",
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, "/list-lost-animals-screen");
+                },
               ),
               buildListButton(
                 label: "Animais\nEncontrados",
                 imagePath: "assets/images/dog-find.png",
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, "/list-find-animals-screen");
+                },
               ),
             ],
           ),

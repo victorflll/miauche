@@ -18,6 +18,7 @@ class BaseAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      backgroundColor: AppColors.darkBlue,
       title: AppText(
         label: label,
         isBold: true,
