@@ -25,30 +25,30 @@ class Animal {
   Map toMap() {
     Map data = {};
 
-    data['name'] = this.name;
-    data['age'] = this.age;
-    data['hasCollor'] = this.hasCollor;
-    data['hasDeficiency'] = this.hasDeficiency;
-    data['animalType'] = this.animalType;
-    data['gender'] = this.gender;
-    data['size'] = this.size;
-    data['fur'] = this.fur;
-    data['furCollor'] = this.furCollor;
-    data['additionalFeatures'] = this.additionalFeatures;
+    data['name'] = name;
+    data['age'] = age;
+    data['hasCollor'] = hasCollor;
+    data['hasDeficiency'] = hasDeficiency;
+    data['animalType'] = animalType;
+    data['gender'] = gender;
+    data['size'] = size;
+    data['fur'] = fur;
+    data['furCollor'] = furCollor;
+    data['additionalFeatures'] = additionalFeatures;
 
     return data;
   }
 
   Animal.fromMap(Map data) {
-    this.name = data['name'];
-    this.age = data['age'];
-    this.hasCollor = data['hasCollor'];
-    this.hasDeficiency = data['hasDeficiency'];
-    this.animalType = data['animalType'];
-    this.gender = data['gender'];
-    this.size = data['size'];
-    this.fur = data['fur'];
-    this.furCollor = data['furCollor'];
-    this.additionalFeatures = data['additionalFeatures'];
+    name = data['name'];
+    age = data['age'];
+    hasCollor = data['hasCollor'];
+    hasDeficiency = data['hasDeficiency'];
+    animalType = data['animalType'];
+    gender = data['gender'];
+    size = data['size'];
+    fur = data['fur'];
+    furCollor = data['furCollor'];
+    additionalFeatures = data['additionalFeatures'];
   }
 }

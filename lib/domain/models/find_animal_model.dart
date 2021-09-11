@@ -1,5 +1,4 @@
-import 'dart:html';
-
+import 'dart:io';
 import 'package:miauche/domain/models/adress_model.dart';
 import 'package:miauche/domain/models/animal_model.dart';
 
@@ -8,7 +7,7 @@ class FindAnimal {
   late Adress adress;
   late String newsName;
   late String description;
-  late File imageAnimal;
+  late File? imageAnimal;
   late String imagePath;
 
   FindAnimal(
@@ -16,28 +15,28 @@ class FindAnimal {
       required this.adress,
       required this.newsName,
       required this.description,
-      required this.imageAnimal,
+      this.imageAnimal,
       required this.imagePath});
 
   Map toMap() {
     Map data = {};
 
-    data['animal'] = this.animal;
-    data['adress'] = this.adress;
-    data['newsName'] = this.newsName;
-    data['description'] = this.description;
-    data['imageAnimal'] = this.imageAnimal;
-    data['imagePath'] = this.imagePath;
+    data['animal'] = animal;
+    data['adress'] = adress;
+    data['newsName'] = newsName;
+    data['description'] = description;
+    data['imageAnimal'] = imageAnimal;
+    data['imagePath'] = imagePath;
 
     return data;
   }
 
   FindAnimal.fromMap(Map data) {
-    this.animal = data['animal'];
-    this.adress = data['adress'];
-    this.newsName = data['newsName'];
-    this.description = data['description'];
-    this.imageAnimal = data['imageAnimal'];
-    this.imagePath = data['imagePath'];
+    animal = data['animal'];
+    adress = data['adress'];
+    newsName = data['newsName'];
+    description = data['description'];
+    imageAnimal = data['imageAnimal'];
+    imagePath = data['imagePath'];
   }
 }
