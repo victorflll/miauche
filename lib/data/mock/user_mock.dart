@@ -1,4 +1,4 @@
-import 'package:miauche/data/interfaces/user_abstract_api.dart';
+import 'package:miauche/data/interfaces/abstract_api.dart';
 import 'package:miauche/domain/models/user_model.dart';
 
 class UserMock extends UserAbstractApi {
