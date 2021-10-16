@@ -1,5 +1,3 @@
-import 'package:miauche/domain/models/adress_model.dart';
-
 class AdressMock {
   static List<Map> list = [
     {

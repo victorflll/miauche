@@ -1,5 +1,3 @@
-import 'package:miauche/domain/models/animal_model.dart';
-
 class AnimalMock {
   static List<Map> list = [
     {

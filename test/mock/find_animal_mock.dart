@@ -1,6 +1,4 @@
 import 'package:miauche/domain/models/adress_model.dart';
-import 'package:miauche/domain/models/find_animal_model.dart';
-
 import 'adress_mock.dart';
 import 'animal_mock.dart';
 
