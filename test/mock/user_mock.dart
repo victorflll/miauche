@@ -1,7 +1,4 @@
-import 'package:miauche/data/interfaces/abstract_api.dart';
-import 'package:miauche/domain/models/user_model.dart';
-
-class UserMock extends UserAbstractApi {
+class UserMock {
   static List<Map> list = [
     {
       "name": "Maria José",
@@ -17,17 +14,7 @@ class UserMock extends UserAbstractApi {
     },
   ];
 
-  @override
   fetch() async {
     return list;
-  }
-
-  @override
-  add(User user) async {
-    Map data = user.toMap();
-
-    list.add(data);
-
-    return true;
   }
 }

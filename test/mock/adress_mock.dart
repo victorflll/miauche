@@ -1,8 +1,6 @@
-import 'package:miauche/data/interfaces/abstract_api.dart';
 import 'package:miauche/domain/models/adress_model.dart';
 
-
-class AdressMock extends AdressAbstractApi {
+class AdressMock {
   static List<Map> list = [
     {
       "CEP": "12345-678",
@@ -14,17 +12,7 @@ class AdressMock extends AdressAbstractApi {
     },
   ];
 
-  @override
   fetch() async {
     return list;
-  }
-
-  @override
-  add(Adress adress) async {
-    Map data = adress.toMap();
-
-    list.add(data);
-
-    return true;
   }
 }

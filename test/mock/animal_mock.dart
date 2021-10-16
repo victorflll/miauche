@@ -1,7 +1,6 @@
-import 'package:miauche/data/interfaces/abstract_api.dart';
 import 'package:miauche/domain/models/animal_model.dart';
 
-class AnimalMock extends AnimalAbstractApi {
+class AnimalMock {
   static List<Map> list = [
     {
       "name": "Bob",
@@ -17,17 +16,7 @@ class AnimalMock extends AnimalAbstractApi {
     },
   ];
 
-  @override
   fetch() async {
     return list;
-  }
-
-  @override
-  add(Animal animal) async {
-    Map data = animal.toMap();
-
-    list.add(data);
-
-    return true;
   }
 }

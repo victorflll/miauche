@@ -1,54 +1,74 @@
-import 'dart:io';
-import 'package:miauche/domain/models/adress_model.dart';
-import 'package:miauche/domain/models/animal_model.dart';
-
 class LostAnimal {
-  late Animal animal;
-  late bool anotherPlace;
-  late Adress adress;
-  late Adress anotherPlaceAdress;
-  late String newsName;
-  late String description;
-  late String reward;
-  late File? imageAnimal;
-  late String imagePath;
+  String? name;
+  int? age;
+  bool? hasCollor;
+  bool? hasDeficiency;
+  String? deficiency;
+  String? animalType;
+  String? gender;
+  String? size;
+  String? fur;
+  String? furCollor;
+  String? additionalFeatures;
+  String? cep;
+  String? city;
+  String? neighborhood;
+  String? street;
+  String? houseNumber;
+  String? complement;
+  String? newsName;
+  String? description;
+  String? reward;
+  String? imagePath;
 
   LostAnimal(
-      {required this.animal,
-      required this.anotherPlace,
-      required this.adress,
-      required this.anotherPlaceAdress,
+      {required this.name,
+      required this.age,
+      required this.hasCollor,
+      required this.hasDeficiency,
+      required this.animalType,
+      required this.gender,
+      required this.size,
+      required this.fur,
+      required this.furCollor,
+      required this.additionalFeatures,
+      required this.cep,
+      required this.city,
+      required this.neighborhood,
+      required this.street,
+      required this.houseNumber,
+      required this.complement,
       required this.newsName,
       required this.description,
       required this.reward,
-      this.imageAnimal,
       required this.imagePath});
 
-  Map toMap() {
-    Map data = {};
-
-    data['animal'] = animal;
-    data['anotherPlace'] = anotherPlace;
-    data['adress'] = adress;
-    data['anotherPlaceAdress'] = anotherPlaceAdress;
-    data['newsName'] = newsName;
-    data['description'] = description;
-    data['reward'] = reward;
-    data['imageAnimal'] = imageAnimal;
-    data['imagePath'] = imagePath;
-
-    return data;
-  }
-
-  LostAnimal.fromMap(Map data) {
-    animal = data['animal'];
-    anotherPlace = data['anotherPlace'];
-    adress = data['adress'];
-    anotherPlaceAdress = data['anotherPlaceAdress'];
-    newsName = data['newsName'];
+  LostAnimal.fromJson(Map<String, dynamic> data) {
+    name = data['animal_name'];
+    age = data['age'];
+    hasCollor = data['has_collor'];
+    hasDeficiency = data['has_deficiency'];
+    deficiency = data['deficiency'];
+    animalType = data['animal_type'];
+    gender = data['gender'];
+    size = data['size'];
+    fur = data['fur'];
+    furCollor = data['fur_collor'];
+    additionalFeatures = data['additional_features'];
+    cep = data['CEP'];
+    city = data['city'];
+    neighborhood = data['neighborhood'];
+    street = data['street'];
+    houseNumber = data['house_number'];
+    complement = data['complement'];
+    newsName = data['news_name_lost'];
     description = data['description'];
     reward = data['reward'];
-    imageAnimal = data['imageAnimal'];
-    imagePath = data['imagePath'];
+    imagePath = data['image_path'];
+  }
+
+  @override
+  String toString() {
+    return 'LostAnimal{name = $name, age = $age, hasCollor = $hasCollor, hasDeficiency = $hasDeficiency, deficiency =$deficiency, animalType = $animalType, gender = $gender, size = $size, fur = $fur, furCollor = $furCollor, additionalFeatures = $additionalFeatures, cep = $cep, city = $city, neighborhood = $neighborhood, street = $street, houseNumber = $houseNumber, complement = $complement, newsName = $newsName, description = $description, reward = $reward, imagePath = $imagePath},';
   }
 }

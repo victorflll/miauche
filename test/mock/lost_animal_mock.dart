@@ -1,11 +1,8 @@
-import 'package:miauche/data/interfaces/abstract_api.dart';
-import 'package:miauche/data/mock/adress_mock.dart';
-import 'package:miauche/data/mock/animal_mock.dart';
 import 'package:miauche/domain/models/adress_model.dart';
-import 'package:miauche/domain/models/lost_animal_model.dart';
+import 'adress_mock.dart';
 import 'animal_mock.dart';
 
-class LostAnimalMock extends LostAnimalAbstractApi {
+class LostAnimalMock {
   static List<Map> list = [
     {
       "animal": AnimalMock.list,
@@ -26,17 +23,7 @@ class LostAnimalMock extends LostAnimalAbstractApi {
     },
   ];
 
-  @override
   fetch() async {
     return list;
-  }
-
-  @override
-  add(LostAnimal lostAnimal) async {
-    Map data = lostAnimal.toMap();
-
-    list.add(data);
-
-    return true;
   }
 }

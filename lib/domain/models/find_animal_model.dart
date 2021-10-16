@@ -1,42 +1,71 @@
-import 'dart:io';
-import 'package:miauche/domain/models/adress_model.dart';
-import 'package:miauche/domain/models/animal_model.dart';
-
 class FindAnimal {
-  late Animal animal;
-  late Adress adress;
-  late String newsName;
-  late String description;
-  late File? imageAnimal;
-  late String imagePath;
+  String? name;
+  int? age;
+  bool? hasCollor;
+  bool? hasDeficiency;
+  String? deficiency;
+  String? animalType;
+  String? gender;
+  String? size;
+  String? fur;
+  String? furCollor;
+  String? additionalFeatures;
+  String? cep;
+  String? city;
+  String? neighborhood;
+  String? street;
+  String? houseNumber;
+  String? complement;
+  String? newsName;
+  String? description;
+  String? imagePath;
 
   FindAnimal(
-      {required this.animal,
-      required this.adress,
+      {required this.name,
+      required this.age,
+      required this.hasCollor,
+      required this.hasDeficiency,
+      required this.animalType,
+      required this.gender,
+      required this.size,
+      required this.fur,
+      required this.furCollor,
+      required this.additionalFeatures,
+      required this.cep,
+      required this.city,
+      required this.neighborhood,
+      required this.street,
+      required this.houseNumber,
+      required this.complement,
       required this.newsName,
       required this.description,
-      this.imageAnimal,
       required this.imagePath});
 
-  Map toMap() {
-    Map data = {};
-
-    data['animal'] = animal;
-    data['adress'] = adress;
-    data['newsName'] = newsName;
-    data['description'] = description;
-    data['imageAnimal'] = imageAnimal;
-    data['imagePath'] = imagePath;
-
-    return data;
+  FindAnimal.fromJson(Map<String, dynamic> data) {
+    name = data['animal_name'];
+    age = data['age'];
+    hasCollor = data['has_collor'];
+    hasDeficiency = data['has_deficiency'];
+    deficiency = data['deficiency'];
+    animalType = data['animal_type'];
+    gender = data['gender'];
+    size = data['size'];
+    fur = data['fur'];
+    furCollor = data['fur_collor'];
+    additionalFeatures = data['additional_features'];
+    cep = data['CEP'];
+    city = data['city'];
+    neighborhood = data['neighborhood'];
+    street = data['street'];
+    houseNumber = data['house_number'];
+    complement = data['complement'];
+    newsName = data['news_name_lost'];
+    description = data['description'];
+    imagePath = data['image_path'];
   }
 
-  FindAnimal.fromMap(Map data) {
-    animal = data['animal'];
-    adress = data['adress'];
-    newsName = data['newsName'];
-    description = data['description'];
-    imageAnimal = data['imageAnimal'];
-    imagePath = data['imagePath'];
+  @override
+  String toString() {
+    return 'FindAnimal{name = $name, age = $age, hasCollor = $hasCollor, hasDeficiency = $hasDeficiency, deficiency =$deficiency, animalType = $animalType, gender = $gender, size = $size, fur = $fur, furCollor = $furCollor, additionalFeatures = $additionalFeatures, cep = $cep, city = $city, neighborhood = $neighborhood, street = $street, houseNumber = $houseNumber, complement = $complement, newsName = $newsName, description = $description, imagePath = $imagePath},';
   }
 }
