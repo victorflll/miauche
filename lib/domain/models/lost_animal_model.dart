@@ -1,8 +1,8 @@
 class LostAnimal {
   String? name;
   int? age;
-  bool? hasCollor;
-  bool? hasDeficiency;
+  int? hasCollor;
+  int? hasDeficiency;
   String? deficiency;
   String? animalType;
   String? gender;
@@ -14,10 +14,11 @@ class LostAnimal {
   String? city;
   String? neighborhood;
   String? street;
-  String? houseNumber;
+  int? houseNumber;
   String? complement;
   String? newsName;
   String? description;
+  String? phoneContact;
   String? reward;
   String? imagePath;
 
@@ -40,6 +41,7 @@ class LostAnimal {
       required this.complement,
       required this.newsName,
       required this.description,
+      required this.phoneContact,
       required this.reward,
       required this.imagePath});
 
@@ -63,12 +65,13 @@ class LostAnimal {
     complement = data['complement'];
     newsName = data['news_name_lost'];
     description = data['description'];
+    phoneContact = data['phone_contact'];
     reward = data['reward'];
     imagePath = data['image_path'];
   }
 
   @override
   String toString() {
-    return 'LostAnimal{name = $name, age = $age, hasCollor = $hasCollor, hasDeficiency = $hasDeficiency, deficiency =$deficiency, animalType = $animalType, gender = $gender, size = $size, fur = $fur, furCollor = $furCollor, additionalFeatures = $additionalFeatures, cep = $cep, city = $city, neighborhood = $neighborhood, street = $street, houseNumber = $houseNumber, complement = $complement, newsName = $newsName, description = $description, reward = $reward, imagePath = $imagePath},';
+    return 'LostAnimal{name = $name, age = $age, hasCollor = $hasCollor, hasDeficiency = $hasDeficiency, deficiency =$deficiency, animalType = $animalType, gender = $gender, size = $size, fur = $fur, furCollor = $furCollor, additionalFeatures = $additionalFeatures, cep = $cep, city = $city, neighborhood = $neighborhood, street = $street, houseNumber = $houseNumber, complement = $complement, newsName = $newsName, description = $description, phoneContact = $phoneContact, reward = $reward, imagePath = $imagePath},';
   }
 }

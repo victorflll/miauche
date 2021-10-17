@@ -1,8 +1,8 @@
 class FindAnimal {
   String? name;
   int? age;
-  bool? hasCollor;
-  bool? hasDeficiency;
+  int? hasCollor;
+  int? hasDeficiency;
   String? deficiency;
   String? animalType;
   String? gender;
@@ -14,10 +14,11 @@ class FindAnimal {
   String? city;
   String? neighborhood;
   String? street;
-  String? houseNumber;
+  int? houseNumber;
   String? complement;
   String? newsName;
   String? description;
+  String? phoneContact;
   String? imagePath;
 
   FindAnimal(
@@ -39,6 +40,7 @@ class FindAnimal {
       required this.complement,
       required this.newsName,
       required this.description,
+      required this.phoneContact,
       required this.imagePath});
 
   FindAnimal.fromJson(Map<String, dynamic> data) {
@@ -61,11 +63,12 @@ class FindAnimal {
     complement = data['complement'];
     newsName = data['news_name_lost'];
     description = data['description'];
+    phoneContact = data['phone_contact'];
     imagePath = data['image_path'];
   }
 
   @override
   String toString() {
-    return 'FindAnimal{name = $name, age = $age, hasCollor = $hasCollor, hasDeficiency = $hasDeficiency, deficiency =$deficiency, animalType = $animalType, gender = $gender, size = $size, fur = $fur, furCollor = $furCollor, additionalFeatures = $additionalFeatures, cep = $cep, city = $city, neighborhood = $neighborhood, street = $street, houseNumber = $houseNumber, complement = $complement, newsName = $newsName, description = $description, imagePath = $imagePath},';
+    return 'FindAnimal{name = $name, age = $age, hasCollor = $hasCollor, hasDeficiency = $hasDeficiency, deficiency =$deficiency, animalType = $animalType, gender = $gender, size = $size, fur = $fur, furCollor = $furCollor, additionalFeatures = $additionalFeatures, cep = $cep, city = $city, neighborhood = $neighborhood, street = $street, houseNumber = $houseNumber, complement = $complement, newsName = $newsName, description = $description, phoneContact = $phoneContact, imagePath = $imagePath},';
   }
 }

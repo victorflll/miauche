@@ -7,7 +7,7 @@ class User {
   String? city;
   String? neighborhood;
   String? street;
-  String? houseNumber;
+  int? houseNumber;
   String? complement;
 
   User(

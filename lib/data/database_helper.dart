@@ -27,58 +27,33 @@ class DatabaseHelper {
 
   onCreate(Database db, int version) async {
     String sql =
-        'CREATE TABLE `USER`(`id_user` int NOT NULL auto_increment, `name` varchar(200) NOT NULL default '
-        ', `phone` varchar(200) NOT NULL default '
-        ', `email` varchar(200) NOT NULL default '
-        ' unique, `password` varchar(45) NOT NULL default '
-        ', `cep` varchar(200) NULL default '
-        ', `city` varchar(200) NOT NULL default '
-        ', `neighborhood` varchar(200) NOT NULL default '
-        ', `street` varchar(200) NULL default '
-        ', `house_number` varchar(200) NULL default '
-        ', `complement` varchar(200) NULL default '
-        ', PRIMARY KEY(`id_user`, `email`)); ';
+        "CREATE TABLE `USER`(`id_user` INTEGER NOT NULL AUTOINCREMENT, `name` varchar(200) NOT NULL, `phone` varchar(200) NOT NULL, `email` varchar(200) NOT NULL unique, `password` varchar(45) NOT NULL, `cep` varchar(200) NULL, `city` varchar(200) NOT NULL, `neighborhood` varchar(200) NOT NULL, `street` varchar(200) NULL, `house_number` INTEGER NULL, `complement` varchar(200) NULL, PRIMARY KEY(`id_user`, `email`));";
     await db.execute(sql);
 
     sql =
-        'CREATE TABLE `FIND_ANIMAL`( `id_find` int NOT NULL auto_increment, `animal_name` varchar(30) NULL default'
-        ', `age` int NULL, `has_collor` boolean NOT NULL, `has_deficiency` boolean NOT NULL, `deficiency` varchar(200) NULL, `animal_type` varchar(30) NOT NULL default '
-        ', `gender` varchar(30) NOT NULL default '
-        ', `size` varchar(30) NOT NULL default '
-        ', `fur` varchar(30) NOT NULL default'
-        ', `fur_collor` varchar(30) NOT NULL default'
-        ', `additional_features` varchar(500) NULL default '
-        ', `cep` varchar(200) NULL default '
-        ', `city` varchar(200) NOT NULL default '
-        ', `neighborhood` varchar(200) NOT NULL default '
-        ', `street` varchar(200) NULL default '
-        ', `house_number` varchar(200) NULL default '
-        ', `complement` varchar(200) NULL default '
-        ', `news_name_find` varchar(200) NULL default'
-        ', `description` varchar(200) NULL default '
-        ', `imagePath` varchar(200) NULL default '
-        ', PRIMARY KEY(`id_find`, `news_name_find`);';
+        "CREATE TABLE `FIND_ANIMAL`( `id_find` INTEGER NOT NULL AUTOINCREMENT, `animal_name` varchar(30) NULL default'', `age` INTEGER  NULL, `has_collor` boolean NOT NULL, `has_deficiency` boolean NOT NULL, `deficiency` varchar(200) NULL, `animal_type` varchar(30) NOT NULL, `gender` varchar(30) NOT NULL, `size` varchar(30) NOT NULL, `fur` varchar(30) NOT NULL default'', `fur_collor` varchar(30) NOT NULL default'', `additional_features` varchar(500) NULL, `cep` varchar(200) NULL, `city` varchar(200) NOT NULL, `neighborhood` varchar(200) NOT NULL, `street` varchar(200) NULL, `house_number` INTEGER NULL, `complement` varchar(200) NULL, `news_name_find` varchar(200) NULL default'', `description` varchar(200) NULL, `image_path` varchar(200) NULL, PRIMARY KEY(`id_find`, `news_name_find`));";
     await db.execute(sql);
 
     sql =
-        'CREATE TABLE `LOST_ANIMAL`(`id_lost` int NOT NULL auto_increment, `animal_name` varchar(30) NULL default'
-        ', `age` int NULL, `has_collor` boolean NOT NULL, `has_deficiency` boolean NOT NULL, `deficiency` varchar(200) NULL, `animal_type` varchar(30) NOT NULL default '
-        ', `gender` varchar(30) NOT NULL default '
-        ', `size` varchar(30) NOT NULL default '
-        ', `fur` varchar(30) NOT NULL default'
-        ', `fur_collor` varchar(30) NOT NULL default'
-        ', `additional_features` varchar(500) NULL default '
-        ', `cep` varchar(200) NULL default '
-        ', `city` varchar(200) NOT NULL default '
-        ', `neighborhood` varchar(200) NOT NULL default '
-        ', `street` varchar(200) NULL default '
-        ', `house_number` varchar(200) NULL default '
-        ', `complement` varchar(200) NULL default '
-        ', `news_name_lost` varchar(200) NULL default'
-        ', `description` varchar(200) NULL default '
-        ', `reward` varchar(200) NULL default '
-        ', `imagePath` varchar(200) NULL default '
-        ', PRIMARY KEY(`id_lost`, `news_name_lost`);';
+        "CREATE TABLE `LOST_ANIMAL`(`id_lost` INTEGER NOT NULL AUTOINCREMENT, `animal_name` varchar(30) NULL default'', `age` INTEGER  NULL, `has_collor` boolean NOT NULL, `has_deficiency` boolean NOT NULL, `deficiency` varchar(200) NULL, `animal_type` varchar(30) NOT NULL, `gender` varchar(30) NOT NULL, `size` varchar(30) NOT NULL, `fur` varchar(30) NOT NULL default'', `fur_collor` varchar(30) NOT NULL default'', `additional_features` varchar(500) NULL, `cep` varchar(200) NULL, `city` varchar(200) NOT NULL, `neighborhood` varchar(200) NOT NULL, `street` varchar(200) NULL, `house_number` INTEGER NULL, `complement` varchar(200) NULL, `news_name_lost` varchar(200) NULL default'', `description` varchar(200) NULL, `phone_contact` varchar(200) NOT NULL, `reward` varchar(200) NULL, `image_path` varchar(200) NULL, PRIMARY KEY(`id_lost`, `news_name_lost`));";
+    await db.execute(sql);
+
+    sql =
+        "INSERT INTO `FIND_ANIMAL`(`animal_name`, `age`, `has_collor`, `has_deficiency`, `deficiency`, `animal_type`, `gender`, `size`, `fur`, `fur_collor`,`additional_features`, `cep`, `city`, `neighborhood`, `street`, `house_number`, `complement`, `news_name_find`, `description`, `phone_contact`, `image_path`) VALUES ('Jordan', '1', false, false, '', 'Gato', 'Macho', 'Pequeno', 'Pelagem curta', 'pintado(preto e branco)', '', '57300000', 'Arapiraca','Novo Horizonte', 'Avenida Minervina', 79, 'Casa', 'Gato pintado sem coleira pelo bairro Novo Horizonte', 'Gato meio arisco encontrado em minha casa', '(82) 98181-9999', 'https://2.bp.blogspot.com/-3TFNt2X_HxM/V0DjAxymUMI/AAAAAAAAJnw/R6fs7naJLzAyh2rpQoJCm6eaLQo9pSuGgCLcB/s1600/gato-mascarado-preto-e-branco-black-white-cat.jpg');";
+    await db.execute(sql);
+
+    sql =
+        "INSERT INTO `LOST_ANIMAL`(`animal_name`, `age`, `has_collor`, `has_deficiency`, `deficiency`, `animal_type`, `gender`, `size`, `fur`, `fur_collor`, `additional_features`, `cep`, `city`, `neighborhood`, `street`, `house_number`, `complement`, `news_name_lost`, `description`, `phone_contact`, `reward`, `image_path`) VALUES('Nico', '2', true, false, '', 'Gato', 'Macho', 'Pequeno', 'Pelagem curta', 'Preta', '','57300000', 'Arapiraca', 'Alto do Cruzeiro', 'Rua Presidente Medici', 158, 'Casa', 'Gato sumido há 6 dias na região do alto do Cruzeiro', 'Animal dócil e pode ser identificado por ter problema de locomoção na sua patinha traseira direita', '(82) 99999-8888', '', 'https://saude.abril.com.br/wp-content/uploads/2021/03/bichos-foto-vauvau-Getty-Images.png?quality=85&strip=info&resize=680,453');";
+    await db.execute(sql);
+
+    sql =
+        "INSERT INTO `LOST_ANIMAL`(`animal_name`, `age`, `has_collor`, `has_deficiency`, `deficiency`, `animal_type`, `gender`, `size`, `fur`, `fur_collor`, `additional_features`, `cep`, `city`, `neighborhood`, `street`, `house_number`, `complement`, `news_name_lost`, `description`, `phone_contact`, `reward`, `image_path`) VALUES ('Alexia', '6', true, false, '', 'Cachorro', 'Femea', 'Grande', 'Pelagem média', 'Marrom', '', '57300000', 'Arapiraca', 'Novo Horizonte', 'Rua Andre Felix da Silva', 495, 'Casa', 'Cachorro fugiu durante passeio na area verde', 'Cadela grande, dócil e atende por Alexia, qualquer informacao, por favor, entrar em contato', '(82) 99785-6666', '', 'https://www.portalmamore.com.br/wp-content/uploads/2018/08/38747202_1489866814492901_3388966575091482624_n.jpg');";
+
+    await db.execute(sql);
+
+    sql =
+        "INSERT INTO `FIND_ANIMAL`(`animal_name`, `age`, `has_collor`, `has_deficiency`, `deficiency`, `animal_type`, `gender`, `size`, `fur`, `fur_collor`,`additional_features`, `cep`, `city`, `neighborhood`, `street`, `house_number`, `complement`, `news_name_find`, `description`, `phone_contact`, `image_path`) VALUES ('Rex', '5', true, false, '', 'Cachorro', 'Macho', 'Grande', 'Pelagem curta', 'Preto', 'Vermelha', '57300000', 'Arapiraca', 'Brasilia', 'Rua Brasilia', 155, 'Casa', 'Cachorro encontrado no bairro brasilia', 'Animal dócil e aparentemente saudável', '(82) 98588-7777', 'https://www.dicaspetz.com.br/wp-content/uploads/2020/06/gatos-pretos.jpg');";
+
     await db.execute(sql);
   }
 }
