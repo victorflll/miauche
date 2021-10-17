@@ -6,6 +6,7 @@ class LostAnimal {
   String? deficiency;
   String? animalType;
   String? gender;
+  String? breed;
   String? size;
   String? fur;
   String? furCollor;
@@ -29,6 +30,7 @@ class LostAnimal {
       required this.hasDeficiency,
       required this.animalType,
       required this.gender,
+      required this.breed,
       required this.size,
       required this.fur,
       required this.furCollor,
@@ -53,6 +55,7 @@ class LostAnimal {
     deficiency = data['deficiency'];
     animalType = data['animal_type'];
     gender = data['gender'];
+    breed = data['breed'];
     size = data['size'];
     fur = data['fur'];
     furCollor = data['fur_collor'];
@@ -72,6 +75,6 @@ class LostAnimal {
 
   @override
   String toString() {
-    return 'LostAnimal{name = $name, age = $age, hasCollor = $hasCollor, hasDeficiency = $hasDeficiency, deficiency =$deficiency, animalType = $animalType, gender = $gender, size = $size, fur = $fur, furCollor = $furCollor, additionalFeatures = $additionalFeatures, cep = $cep, city = $city, neighborhood = $neighborhood, street = $street, houseNumber = $houseNumber, complement = $complement, newsName = $newsName, description = $description, phoneContact = $phoneContact, reward = $reward, imagePath = $imagePath},';
+    return 'LostAnimal{name = $name, age = $age, hasCollor = $hasCollor, hasDeficiency = $hasDeficiency, deficiency =$deficiency, animalType = $animalType, gender = $gender, breed = $breed, size = $size, fur = $fur, furCollor = $furCollor, additionalFeatures = $additionalFeatures, cep = $cep, city = $city, neighborhood = $neighborhood, street = $street, houseNumber = $houseNumber, complement = $complement, newsName = $newsName, description = $description, phoneContact = $phoneContact, reward = $reward, imagePath = $imagePath},';
   }
 }

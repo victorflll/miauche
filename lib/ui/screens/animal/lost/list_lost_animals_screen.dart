@@ -100,7 +100,9 @@ class _ListLostAnimalsScreenState extends State<ListLostAnimalsScreen> {
         if (snapshot.hasData) {
           return buildListView(snapshot.data!);
         } else {
-          return const CircularProgressIndicator();
+          return const Expanded(
+            child: Center(child: CircularProgressIndicator()),
+          );
         }
       },
     );
@@ -114,10 +116,11 @@ class _ListLostAnimalsScreenState extends State<ListLostAnimalsScreen> {
       itemCount: list.length,
       itemBuilder: (context, index) {
         return AppCard(
-          animalName: list[index].name!,
+          animalType: list[index].animalType!,
           description: list[index].description!,
           phoneContact: list[index].phoneContact ?? "",
           imagePath: list[index].imagePath!,
+          lostAnimal: list[index],
         );
       },
     );

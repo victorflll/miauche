@@ -7,12 +7,17 @@ import 'package:miauche/ui/widgets/fields/app_text_form_field.dart';
 
 class UserRegisterScreen extends StatelessWidget {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _phoneController = TextEditingController();
-  final TextEditingController _passwordAgainController =
-      TextEditingController();
-  final TextEditingController _nameController = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _phoneController = TextEditingController();
+  final _passwordAgainController = TextEditingController();
+  final _nameController = TextEditingController();
+  final _cepController = TextEditingController();
+  final _districtController = TextEditingController();
+  final _streetController = TextEditingController();
+  final _numberController = TextEditingController();
+  final _cityController = TextEditingController();
+  final _complementController = TextEditingController();
 
   UserRegisterScreen({Key? key}) : super(key: key);
 
@@ -44,7 +49,7 @@ class UserRegisterScreen extends StatelessWidget {
             AppTextFormField(
               controller: _nameController,
               keybordType: TextInputType.name,
-              label: "Nome:",
+              label: "Nome Completo:",
               hintText: "Digite seu nome aqui...",
               prefixIcon: const Icon(
                 Icons.person,
@@ -98,14 +103,112 @@ class UserRegisterScreen extends StatelessWidget {
               mask: '(##) #####-####',
             ),
             const SizedBox(height: 16),
+            buildSearchCEP(),
+            const SizedBox(height: 16),
+            AppTextFormField(
+              controller: _cityController,
+              keybordType: TextInputType.text,
+              label: "Cidade:",
+              hintText: "Digite sua cidade aqui...",
+              prefixIcon: const Icon(
+                Icons.location_city,
+                color: AppColors.violet,
+              ),
+            ),
+            const SizedBox(height: 16),
+            AppTextFormField(
+              controller: _districtController,
+              keybordType: TextInputType.text,
+              label: "Bairro:",
+              hintText: "Digite seu bairro aqui...",
+              prefixIcon: const Icon(
+                Icons.edit_road_outlined,
+                color: AppColors.violet,
+              ),
+            ),
+            const SizedBox(height: 16),
+            Row(
+              children: [
+                Expanded(
+                  flex: 3,
+                  child: AppTextFormField(
+                    controller: _streetController,
+                    keybordType: TextInputType.text,
+                    label: "Rua:",
+                    hintText: "Digite sua rua aqui...",
+                    prefixIcon: const Icon(
+                      Icons.confirmation_number_outlined,
+                      color: AppColors.violet,
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 16),
+                Expanded(
+                  flex: 1,
+                  child: AppTextFormField(
+                    controller: _numberController,
+                    keybordType: TextInputType.number,
+                    label: "Nº:",
+                    hintText: "Número da residência...",
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 16),
+            AppTextFormField(
+              controller: _complementController,
+              keybordType: TextInputType.multiline,
+              label: "Complemento:",
+              hintText: "Digite algum ponto de referência aqui...",
+              prefixIcon: const Icon(
+                Icons.add,
+                color: AppColors.violet,
+              ),
+            ),
+            const SizedBox(height: 16),
             AppButton(
               text: "Concluir cadastro",
               icon: Icons.done,
               onPressed: () {},
             ),
+            const SizedBox(height: 24),
           ],
         ),
       ),
+    );
+  }
+
+  Row buildSearchCEP() {
+    return Row(
+      children: [
+        Expanded(
+          flex: 4,
+          child: AppTextFormField(
+            controller: _cepController,
+            keybordType: TextInputType.number,
+            label: "CEP",
+            hintText: "Digite seu CEP aqui...",
+            filter: {"#": RegExp(r'[0-9]')},
+            mask: '#####-###',
+            prefixIcon: const Icon(
+              Icons.location_on,
+              color: AppColors.violet,
+            ),
+          ),
+        ),
+        const SizedBox(width: 16),
+        Expanded(
+          flex: 1,
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              shape: const StadiumBorder(),
+              primary: AppColors.darkBlue,
+            ),
+            child: const Icon(Icons.search),
+            onPressed: _onRegister,
+          ),
+        ),
+      ],
     );
   }
 
@@ -119,5 +222,9 @@ class UserRegisterScreen extends StatelessWidget {
         isBold: true,
       ),
     );
+  }
+
+  _onRegister() {
+    if (!_formKey.currentState!.validate()) return;
   }
 }

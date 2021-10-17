@@ -1,11 +1,11 @@
 class FindAnimal {
-  String? name;
   int? age;
   int? hasCollor;
   int? hasDeficiency;
   String? deficiency;
   String? animalType;
   String? gender;
+  String? breed;
   String? size;
   String? fur;
   String? furCollor;
@@ -22,12 +22,12 @@ class FindAnimal {
   String? imagePath;
 
   FindAnimal(
-      {required this.name,
-      required this.age,
+      {required this.age,
       required this.hasCollor,
       required this.hasDeficiency,
       required this.animalType,
       required this.gender,
+      required this.breed,
       required this.size,
       required this.fur,
       required this.furCollor,
@@ -44,13 +44,13 @@ class FindAnimal {
       required this.imagePath});
 
   FindAnimal.fromJson(Map<String, dynamic> data) {
-    name = data['animal_name'];
     age = data['age'];
     hasCollor = data['has_collor'];
     hasDeficiency = data['has_deficiency'];
     deficiency = data['deficiency'];
     animalType = data['animal_type'];
     gender = data['gender'];
+    breed = data['breed'];
     size = data['size'];
     fur = data['fur'];
     furCollor = data['fur_collor'];
@@ -69,6 +69,6 @@ class FindAnimal {
 
   @override
   String toString() {
-    return 'FindAnimal{name = $name, age = $age, hasCollor = $hasCollor, hasDeficiency = $hasDeficiency, deficiency =$deficiency, animalType = $animalType, gender = $gender, size = $size, fur = $fur, furCollor = $furCollor, additionalFeatures = $additionalFeatures, cep = $cep, city = $city, neighborhood = $neighborhood, street = $street, houseNumber = $houseNumber, complement = $complement, newsName = $newsName, description = $description, phoneContact = $phoneContact, imagePath = $imagePath},';
+    return 'FindAnimal{age = $age, hasCollor = $hasCollor, hasDeficiency = $hasDeficiency, deficiency =$deficiency, animalType = $animalType, gender = $gender, breed = $breed, size = $size, fur = $fur, furCollor = $furCollor, additionalFeatures = $additionalFeatures, cep = $cep, city = $city, neighborhood = $neighborhood, street = $street, houseNumber = $houseNumber, complement = $complement, newsName = $newsName, description = $description, phoneContact = $phoneContact, imagePath = $imagePath},';
   }
 }

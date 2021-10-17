@@ -114,10 +114,12 @@ class _ListFindAnimalsScreenState extends State<ListFindAnimalsScreen> {
       itemCount: list.length,
       itemBuilder: (context, index) {
         return AppCard(
-          animalName: list[index].name!,
+          animalType: list[index].animalType!,
           description: list[index].description!,
           phoneContact: list[index].phoneContact ?? "",
           imagePath: list[index].imagePath!,
+          findAnimal: list[index],
+          isFind: true,
         );
       },
     );

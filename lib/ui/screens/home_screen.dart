@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:miauche/ui/screens/animal/choose_register_animal_screen.dart';
+import 'package:miauche/ui/widgets/card%20and%20dialog/choose_register_animal_dialog.dart';
 import 'package:miauche/ui/styles/app_colors.dart';
 import 'package:miauche/ui/widgets/app_text.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -111,7 +116,7 @@ class HomeScreen extends StatelessWidget {
       onPressed: () {
         showDialog(
           context: context,
-          builder: (_) => const ChooseRegisterAnimalScreen(),
+          builder: (_) => const ChooseRegisterAnimalDialog(),
         );
       },
       child: Column(

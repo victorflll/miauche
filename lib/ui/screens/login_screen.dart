@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:miauche/data/user_dao.dart';
+import 'package:miauche/domain/models/user_model.dart';
 import 'package:miauche/ui/styles/app_colors.dart';
 import 'package:miauche/ui/widgets/buttons/app_button.dart';
 import 'package:miauche/ui/widgets/fields/app_password_form_field.dart';
@@ -20,28 +22,33 @@ class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
+  Future<List<User>>? users;
+
+  /*@override
+  void initState() {
+    super.initState();
+    users = UserDAO().listUsers();
+  }*/
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
-        child: Container(
-          constraints: BoxConstraints(
-            maxHeight: MediaQuery.of(context).size.height,
-            maxWidth: MediaQuery.of(context).size.width,
-          ),
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [
-                AppColors.darkBlue,
-                AppColors.background,
-              ],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomCenter,
-            ),
-          ),
-          child: buildBody(),
+      body: Container(
+        constraints: BoxConstraints(
+          maxHeight: MediaQuery.of(context).size.height,
+          maxWidth: MediaQuery.of(context).size.width,
         ),
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              AppColors.darkBlue,
+              AppColors.background,
+            ],
+            begin: Alignment.topLeft,
+            end: Alignment.bottomCenter,
+          ),
+        ),
+        child: buildBody(),
       ),
     );
   }
@@ -54,7 +61,7 @@ class _LoginScreenState extends State<LoginScreen> {
           child: buildLogo(),
         ),
         Expanded(
-          flex: 4,
+          flex: 5,
           child: Container(
             width: double.infinity,
             decoration: const BoxDecoration(
@@ -146,11 +153,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   AppButton buildLoginButton() {
     return AppButton(
-      text: "Entrar",
-      icon: Icons.login,
-      onPressed: () => {
-        Navigator.pushNamed(context, "/home-screen"),
-      },
+      text: "Entrar", icon: Icons.login, onPressed: () {}, //_onLoginSucess,
     );
   }
 
@@ -238,5 +241,10 @@ class _LoginScreenState extends State<LoginScreen> {
         ),
       ],
     );
+  }
+
+  _onLoginSucess() {
+    if (!_formKey.currentState!.validate()) return;
+    Navigator.pushNamed(context, "/home-screen");
   }
 }

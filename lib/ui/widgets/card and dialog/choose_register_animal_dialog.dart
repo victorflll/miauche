@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:miauche/ui/styles/app_colors.dart';
 import 'package:miauche/ui/widgets/app_text.dart';
 
-class ChooseRegisterAnimalScreen extends StatelessWidget {
-  const ChooseRegisterAnimalScreen({Key? key}) : super(key: key);
+class ChooseRegisterAnimalDialog extends StatelessWidget {
+  const ChooseRegisterAnimalDialog({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
