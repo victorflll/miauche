@@ -19,77 +19,96 @@ class DetailsFindListDialog extends StatelessWidget {
         label: "Mais informações",
         isBold: true,
         color: AppColors.darkBlue,
+        fontSize: 20,
       ),
-      content: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const AppText(
-            label: "CARACTERÍSTICAS GERAIS",
-            isBold: true,
-            align: TextAlign.center,
+      content: SizedBox(
+        height: MediaQuery.of(context).size.height * .6,
+        width: MediaQuery.of(context).size.width * .7,
+        child: Scrollbar(
+          isAlwaysShown: true,
+          child: ListView(
+            physics: const BouncingScrollPhysics(),
+            padding: const EdgeInsets.all(8),
+            children: [
+              const AppText(
+                label: "CARACTERÍSTICAS GERAIS",
+                isBold: true,
+                fontSize: 16,
+              ),
+              const SizedBox(height: 24),
+              AppText(
+                align: TextAlign.start,
+                label:
+                    "Tem coleira? ${convertFromBoolean(findAnimal.hasCollor!)}",
+              ),
+              const SizedBox(height: 6),
+              AppText(
+                align: TextAlign.start,
+                label: "Idade: ${findAnimal.age}",
+              ),
+              const SizedBox(height: 6),
+              AppText(
+                align: TextAlign.start,
+                label:
+                    "Aparenta ter alguma deficiência? ${convertFromBoolean(findAnimal.hasDeficiency!)}",
+              ),
+              const SizedBox(height: 6),
+              AppText(
+                align: TextAlign.start,
+                label: "Porte: ${findAnimal.size}",
+              ),
+              const SizedBox(height: 6),
+              AppText(
+                align: TextAlign.start,
+                label: "Pelagem: ${findAnimal.fur}",
+              ),
+              const SizedBox(height: 6),
+              AppText(
+                align: TextAlign.start,
+                label: "Cor da pelagem: ${findAnimal.furCollor}",
+              ),
+              const SizedBox(height: 6),
+              AppText(
+                align: TextAlign.start,
+                label: "Gênero: ${findAnimal.gender}",
+              ),
+              const SizedBox(height: 6),
+              AppText(
+                align: TextAlign.start,
+                label: "Raça: ${findAnimal.breed}",
+              ),
+              const SizedBox(height: 6),
+              AppText(
+                align: TextAlign.start,
+                label:
+                    "Informações adicionais: ${findAnimal.additionalFeatures}",
+              ),
+              const SizedBox(height: 24),
+              const AppText(
+                label: "ENDEREÇO",
+                isBold: true,
+                align: TextAlign.center,
+                fontSize: 16,
+              ),
+              const SizedBox(height: 24),
+              AppText(
+                align: TextAlign.start,
+                label:
+                    "Rua: ${findAnimal.street}, Nº: ${findAnimal.houseNumber}",
+              ),
+              const SizedBox(height: 6),
+              AppText(
+                align: TextAlign.start,
+                label: "Bairro: ${findAnimal.neighborhood}",
+              ),
+              const SizedBox(height: 6),
+              AppText(
+                align: TextAlign.start,
+                label: "Complemento: ${findAnimal.complement}",
+              ),
+            ],
           ),
-          const SizedBox(height: 4),
-          AppText(
-            label: "Tem coleira? ${convertFromBoolean(findAnimal.hasCollor!)}",
-          ),
-          const SizedBox(height: 4),
-          AppText(
-            label: "Idade: ${findAnimal.age}",
-          ),
-          AppText(
-            align: TextAlign.start,
-            label:
-                "Aparenta ter alguma deficiência? ${convertFromBoolean(findAnimal.hasDeficiency!)}",
-          ),
-          const SizedBox(height: 4),
-          AppText(
-            label: "Porte: ${findAnimal.size}",
-          ),
-          const SizedBox(height: 4),
-          AppText(
-            label: "Pelagem: ${findAnimal.fur}",
-          ),
-          const SizedBox(height: 4),
-          AppText(
-            align: TextAlign.start,
-            label: "Cor da pelagem: ${findAnimal.furCollor}",
-          ),
-          const SizedBox(height: 4),
-          AppText(
-            label: "Gênero: ${findAnimal.gender}",
-          ),
-          const SizedBox(height: 4),
-          AppText(
-            label: "Raça: ${findAnimal.breed}",
-          ),
-          const SizedBox(height: 4),
-          AppText(
-            align: TextAlign.start,
-            label: "Informações adicionais: ${findAnimal.additionalFeatures}",
-          ),
-          const SizedBox(height: 8),
-          const AppText(
-            label: "ENDEREÇO",
-            isBold: true,
-            align: TextAlign.center,
-          ),
-          const SizedBox(height: 4),
-          AppText(
-            align: TextAlign.start,
-            label: "Rua: ${findAnimal.street}, Nº: ${findAnimal.houseNumber}",
-          ),
-          const SizedBox(height: 4),
-          AppText(
-            label: "Bairro: ${findAnimal.neighborhood}",
-          ),
-          const SizedBox(height: 4),
-          AppText(
-            align: TextAlign.start,
-            label: "Complemento: ${findAnimal.complement}",
-          ),
-        ],
+        ),
       ),
       actions: [
         CupertinoDialogAction(

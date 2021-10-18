@@ -19,93 +19,109 @@ class DetailsLostListDialog extends StatelessWidget {
         label: "Mais informações",
         isBold: true,
         color: AppColors.darkBlue,
+        fontSize: 20,
       ),
-      content: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const AppText(
-            label: "CARACTERÍSTICAS GERAIS",
-            isBold: true,
-            align: TextAlign.center,
+      content: SizedBox(
+        height: MediaQuery.of(context).size.height * .6,
+        width: MediaQuery.of(context).size.width * .7,
+        child: Scrollbar(
+          isAlwaysShown: true,
+          child: ListView(
+            physics: const BouncingScrollPhysics(),
+            padding: const EdgeInsets.all(8),
+            children: [
+              const AppText(
+                label: "CARACTERÍSTICAS GERAIS",
+                isBold: true,
+                fontSize: 16,
+              ),
+              const SizedBox(height: 16),
+              AppText(
+                align: TextAlign.start,
+                label: "Nome: ${lostAnimal.name}",
+              ),
+              const SizedBox(height: 6),
+              AppText(
+                align: TextAlign.start,
+                label:
+                    "Tinha coleira? ${convertFromBoolean(lostAnimal.hasCollor!)}",
+              ),
+              const SizedBox(height: 6),
+              AppText(
+                align: TextAlign.start,
+                label: "Idade: ${lostAnimal.age}",
+              ),
+              const SizedBox(height: 6),
+              AppText(
+                align: TextAlign.start,
+                label:
+                    "Tem alguma deficiência? ${convertFromBoolean(lostAnimal.hasDeficiency!)}",
+              ),
+              const SizedBox(height: 6),
+              AppText(
+                align: TextAlign.start,
+                label: "Porte: ${lostAnimal.size}",
+              ),
+              const SizedBox(height: 6),
+              AppText(
+                align: TextAlign.start,
+                label: "Pelagem: ${lostAnimal.fur}",
+              ),
+              const SizedBox(height: 6),
+              AppText(
+                align: TextAlign.start,
+                label: "Cor da pelagem: ${lostAnimal.furCollor}",
+              ),
+              const SizedBox(height: 6),
+              AppText(
+                align: TextAlign.start,
+                label: "Gênero: ${lostAnimal.gender}",
+              ),
+              const SizedBox(height: 6),
+              AppText(
+                align: TextAlign.start,
+                label: "Raça: ${lostAnimal.breed}",
+              ),
+              const SizedBox(height: 6),
+              AppText(
+                align: TextAlign.start,
+                label:
+                    "Informações adicionais: ${lostAnimal.additionalFeatures}",
+              ),
+              const SizedBox(height: 24),
+              const AppText(
+                label: "ENDEREÇO",
+                isBold: true,
+              ),
+              const SizedBox(height: 24),
+              AppText(
+                align: TextAlign.start,
+                label:
+                    "Rua: ${lostAnimal.street}, Nº: ${lostAnimal.houseNumber}",
+              ),
+              const SizedBox(height: 6),
+              AppText(
+                align: TextAlign.start,
+                label: "Bairro: ${lostAnimal.neighborhood}",
+              ),
+              const SizedBox(height: 6),
+              AppText(
+                align: TextAlign.start,
+                label: "Complemento: ${lostAnimal.complement}",
+              ),
+              const SizedBox(height: 24),
+              const AppText(
+                label: "ADICIONAIS",
+                isBold: true,
+              ),
+              const SizedBox(height: 24),
+              AppText(
+                align: TextAlign.start,
+                label: "Recompensa: ${lostAnimal.reward}",
+              ),
+            ],
           ),
-          const SizedBox(height: 4),
-          AppText(
-            label: "Nome: ${lostAnimal.name}",
-          ),
-          const SizedBox(height: 4),
-          AppText(
-            label:
-                "Tinha coleira? ${convertFromBoolean(lostAnimal.hasCollor!)}",
-          ),
-          const SizedBox(height: 4),
-          AppText(
-            label: "Idade: ${lostAnimal.age}",
-          ),
-          AppText(
-            align: TextAlign.start,
-            label:
-                "Tem alguma deficiência? ${convertFromBoolean(lostAnimal.hasDeficiency!)}",
-          ),
-          const SizedBox(height: 4),
-          AppText(
-            label: "Porte: ${lostAnimal.size}",
-          ),
-          const SizedBox(height: 4),
-          AppText(
-            label: "Pelagem: ${lostAnimal.fur}",
-          ),
-          const SizedBox(height: 4),
-          AppText(
-            align: TextAlign.start,
-            label: "Cor da pelagem: ${lostAnimal.furCollor}",
-          ),
-          const SizedBox(height: 4),
-          AppText(
-            label: "Gênero: ${lostAnimal.gender}",
-          ),
-          const SizedBox(height: 4),
-          AppText(
-            label: "Raça: ${lostAnimal.breed}",
-          ),
-          const SizedBox(height: 4),
-          AppText(
-            align: TextAlign.start,
-            label: "Informações adicionais: ${lostAnimal.additionalFeatures}",
-          ),
-          const SizedBox(height: 8),
-          const AppText(
-            label: "ENDEREÇO",
-            isBold: true,
-            align: TextAlign.center,
-          ),
-          const SizedBox(height: 4),
-          AppText(
-            align: TextAlign.start,
-            label: "Rua: ${lostAnimal.street}, Nº: ${lostAnimal.houseNumber}",
-          ),
-          const SizedBox(height: 4),
-          AppText(
-            label: "Bairro: ${lostAnimal.neighborhood}",
-          ),
-          const SizedBox(height: 4),
-          AppText(
-            align: TextAlign.start,
-            label: "Complemento: ${lostAnimal.complement}",
-          ),
-          const SizedBox(height: 4),
-          const AppText(
-            label: "ADICIONAIS",
-            isBold: true,
-            align: TextAlign.center,
-          ),
-          const SizedBox(height: 4),
-          AppText(
-            align: TextAlign.start,
-            label: "Recompensa: ${lostAnimal.reward}",
-          ),
-        ],
+        ),
       ),
       actions: [
         CupertinoDialogAction(
