@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:miauche/data/dao/user_dao.dart';
-import 'package:miauche/domain/models/user_model.dart';
-import 'package:miauche/ui/screens/home_screen.dart';
 import 'package:miauche/ui/styles/app_colors.dart';
 import 'package:miauche/ui/widgets/buttons/app_button.dart';
 import 'package:miauche/ui/widgets/dialog/app_alert_dialog.dart';
