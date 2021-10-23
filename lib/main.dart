@@ -7,6 +7,7 @@ import 'package:miauche/ui/screens/animal/find/list_find_animals_screen.dart';
 import 'package:miauche/ui/screens/animal/lost/list_lost_animals_screen.dart';
 import 'package:miauche/ui/screens/animal/lost/lost_animal_adress_register_screen.dart';
 import 'package:miauche/ui/screens/animal/lost/lost_animal_appeal_register_screen.dart';
+import 'package:miauche/ui/screens/general/splash_screen.dart';
 import 'package:miauche/ui/screens/home_screen.dart';
 import 'package:miauche/ui/screens/login_screen.dart';
 import 'package:miauche/ui/screens/animal/lost/lost_animal_general_register_screen.dart';
@@ -31,9 +32,9 @@ class MyApp extends StatelessWidget {
       title: 'Miauche',
       debugShowCheckedModeBanner: false,
       theme: AppThemes.generalTheme,
-      initialRoute: '/',
+      home: const SplashScreen(),
       routes: {
-        '/': (context) => const LoginScreen(),
+        '/login-screen': (context) => const LoginScreen(),
         '/user-register-screen': (context) => UserRegisterScreen(),
         '/home-screen': (context) => const HomeScreen(),
         '/list-find-animals-screen': (context) => const ListFindAnimalsScreen(),
