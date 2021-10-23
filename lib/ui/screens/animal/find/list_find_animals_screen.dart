@@ -4,7 +4,7 @@ import 'package:miauche/domain/models/find_animal_model.dart';
 import 'package:miauche/ui/styles/app_colors.dart';
 import 'package:miauche/ui/widgets/app_text.dart';
 import 'package:miauche/ui/widgets/appbar/base_appbar.dart';
-import 'package:miauche/ui/widgets/card%20and%20dialog/app_card.dart';
+import 'package:miauche/ui/widgets/card/app_card.dart';
 import 'package:miauche/ui/widgets/fields/app_text_form_field.dart';
 
 class ListFindAnimalsScreen extends StatefulWidget {
@@ -29,12 +29,6 @@ class _ListFindAnimalsScreenState extends State<ListFindAnimalsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          buildFutureList();
-        },
-        child: const Icon(Icons.refresh_rounded),
-      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -113,13 +107,18 @@ class _ListFindAnimalsScreenState extends State<ListFindAnimalsScreen> {
       shrinkWrap: true,
       itemCount: list.length,
       itemBuilder: (context, index) {
-        return AppCard(
-          animalType: list[index].animalType!,
-          description: list[index].description!,
-          phoneContact: list[index].phoneContact ?? "",
-          imagePath: list[index].imagePath!,
-          findAnimal: list[index],
-          isFind: true,
+        return Column(
+          children: [
+            AppCard(
+              animalType: list[index].animalType!,
+              description: list[index].description!,
+              phoneContact: list[index].phoneContact ?? "",
+              imagePath: list[index].imagePath!,
+              findAnimal: list[index],
+              isFind: true,
+            ),
+            const SizedBox(height: 16)
+          ],
         );
       },
     );
