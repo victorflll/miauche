@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:miauche/ui/widgets/card%20and%20dialog/choose_register_animal_dialog.dart';
+import 'package:flutter/services.dart';
+import 'package:miauche/domain/models/user_model.dart';
 import 'package:miauche/ui/styles/app_colors.dart';
 import 'package:miauche/ui/widgets/app_text.dart';
+import 'package:miauche/ui/widgets/dialog/choose_register_animal_dialog.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -13,11 +15,13 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    dynamic user = ModalRoute.of(context)!.settings.arguments;
+
     return Scaffold(
       floatingActionButton: Builder(builder: (context) {
         return buildCallDrawer(context);
       }),
-      drawer: buildDrawer(context),
+      drawer: buildDrawer(context, user),
       body: buildBody(context),
     );
   }
@@ -30,51 +34,79 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Container buildDrawer(BuildContext context) {
+  Container buildDrawer(BuildContext context, User user) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 32),
+      padding: const EdgeInsets.symmetric(horizontal: 24),
       color: AppColors.background,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Icon(Icons.person, size: 64),
-              const SizedBox(width: 16),
-              Column(
-                children: const [
-                  AppText(label: "Usuário"),
-                  AppText(label: "email@email.com"),
-                ],
-              ),
-            ],
+          buildUserInformation(user),
+          const SizedBox(height: 32),
+          buildDrawerOptions(),
+        ],
+      ),
+    );
+  }
+
+  Row buildUserInformation(User user) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        const Icon(Icons.person, size: 64),
+        const SizedBox(width: 16),
+        Column(
+          children: [
+            AppText(
+              label: user.name!,
+              isBold: true,
+              fontSize: 18,
+            ),
+            AppText(label: user.email!),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Padding buildDrawerOptions() {
+    return Padding(
+      padding: const EdgeInsets.only(left: 8),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const AppText(label: "Editar perfil"),
+          const SizedBox(height: 8),
+          const AppText(label: "Seus animais perdidos"),
+          const SizedBox(height: 8),
+          const AppText(label: "Seus animais encontrados"),
+          const SizedBox(height: 8),
+          buildExitApp(),
+        ],
+      ),
+    );
+  }
+
+  ElevatedButton buildExitApp() {
+    return ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        elevation: 5,
+        shape: const StadiumBorder(),
+        primary: AppColors.white,
+      ),
+      onPressed: () => SystemNavigator.pop(),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          AppText(
+            label: "Sair do aplicativo",
+            color: Colors.red.shade900,
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 32),
-              const AppText(label: "Editar perfil"),
-              const SizedBox(height: 8),
-              const AppText(label: "Seus animais perdidos"),
-              const SizedBox(height: 8),
-              const AppText(label: "Seus animais encontrados"),
-              const SizedBox(height: 8),
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  AppText(
-                    label: "Sair da conta",
-                    color: Colors.red.shade900,
-                  ),
-                  const SizedBox(width: 8),
-                  Icon(
-                    Icons.logout,
-                    color: Colors.red.shade900,
-                  ),
-                ],
-              ),
-            ],
+          const SizedBox(width: 8),
+          Icon(
+            Icons.logout,
+            color: Colors.red.shade900,
           ),
         ],
       ),

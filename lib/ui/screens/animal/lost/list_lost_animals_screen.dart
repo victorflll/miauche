@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:miauche/data/lost_animal_dao.dart';
+import 'package:miauche/data/dao/lost_animal_dao.dart';
 import 'package:miauche/domain/models/lost_animal_model.dart';
 import 'package:miauche/ui/styles/app_colors.dart';
 import 'package:miauche/ui/widgets/app_text.dart';

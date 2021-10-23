@@ -23,4 +23,23 @@ class UserDAO {
 
     return list;
   }
+
+  Future<List<User>> fetchUserByEmailAndPassword(
+      {required String email, required String password}) async {
+    List<User> list = [];
+
+    DatabaseHelper database = DatabaseHelper();
+    Database db = await database.db;
+
+    String sql =
+        "SELECT * FROM $tableName WHERE `email` = '$email' AND `password` = '$password';";
+    final result = await db.rawQuery(sql);
+
+    for (var json in result) {
+      User user = User.fromJson(json);
+      list.add(user);
+    }
+
+    return list;
+  }
 }

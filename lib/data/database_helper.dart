@@ -39,6 +39,36 @@ class DatabaseHelper {
     await db.execute(sql);
 
     sql =
+        "INSERT INTO `USER`(`name`, `phone`, `email`, `password`, `cep`, `city`, `neighborhood`, `street`, `house_number`, `complement`) VALUES('Carlos Augusto', '82991065093', 'camnj1@aluno.ifal.edu.br', 'senha123456', '57300000', 'Arapiraca', 'Caititus', 'Andre Felix', 95, 'Casa');";
+    await db.execute(sql);
+
+    sql =
+        "INSERT INTO `USER`(`name`, `phone`, `email`, `password`, `cep`, `city`, `neighborhood`, `street`, `house_number`, `complement`) VALUES('Wildimyla Leite', '82999773417', 'wkdol1@aluno.ifal.edu.br', 'senha123456', '57300000', 'Arapiraca', 'Baixa Grande', 'Fábio Tavares', 07, 'Casa');";
+    await db.execute(sql);
+
+    sql =
+        "INSERT INTO `USER`(`name`, `phone`, `email`, `password`, `cep`, `city`, `neighborhood`, `street`, `house_number`, `complement`) VALUES('Victor Lemos', '8299999-9999', 'vlll1@aluno.ifal.edu.br', 'senha123456', '573000000', 'Arapiraca', 'Baixão', 'Ângelo Tadeu', 97, 'Casa');";
+    await db.execute(sql);
+
+    sql =
+        "INSERT INTO `USER`(`name`, `phone`, `email`, `password`, `cep`, `city`, `neighborhood`, `street`, `house_number`, `complement`) VALUES('Guilherme Barbosa', '8299999-9999', 'gbp1@aluno.ifal.edu.br', 'senha123456', '573000000', 'Arapiraca', 'Novo Horizonte', 'Avenida Minervina', 974, 'Casa');";
+    await db.execute(sql);
+
+    sql =
+        "INSERT INTO `USER`(`name`, `phone`, `email`, `password`, `cep`, `city`, `neighborhood`, `street`, `house_number`, `complement`) VALUES('Monalisa Cavalcante', '8299999-9999', 'msc5@aluno.ifal.edu.br', 'senha123456', '573000000', 'Arapiraca', 'Centro', '15 de Novembro', 875, 'Casa');";
+    await db.execute(sql);
+
+    sql =
+        "INSERT INTO `USER`(`name`, `phone`, `email`, `password`, `cep`, `city`, `neighborhood`, `street`, `house_number`, `complement`) VALUES('Ana Beatriz', '8299999-9999', 'absm1@aluno.ifal.edu.br', 'senha123456', '573000000', 'Arapiraca', 'Canafistula', 'Rua Afonso Pena', 648, 'Casa');";
+
+    await db.execute(sql);
+
+    sql =
+        "INSERT INTO `USER`(`name`, `phone`, `email`, `password`, `cep`, `city`, `neighborhood`, `street`, `house_number`, `complement`) VALUES('Tarsis Marinho', '8299999-9999', 'tarsis.souza@ifal.edu.br', 'senha123456', '573000000', 'Arapiraca', 'Centro', 'Rua São Francisco', 924, 'Casa');";
+
+    await db.execute(sql);
+
+    sql =
         "INSERT INTO `FIND_ANIMAL`(`age`, `has_collor`, `has_deficiency`, `deficiency`, `animal_type`, `gender`, `breed`, `size`, `fur`, `fur_collor`,`additional_features`, `cep`, `city`, `neighborhood`, `street`, `house_number`, `complement`, `news_name_find`, `description`, `phone_contact`, `image_path`) VALUES (1, 0, 0, '', 'Gato', 'Macho', 'Pintado', 'Pequeno', 'Pelagem curta', 'pintado(preto e branco)', '', '57300000', 'Arapiraca','Novo Horizonte', 'Avenida Minervina', 79, 'Casa', 'Gato pintado sem coleira pelo bairro Novo Horizonte', 'Gato meio arisco encontrado em minha casa', '(82) 98181-9999', 'https://2.bp.blogspot.com/-3TFNt2X_HxM/V0DjAxymUMI/AAAAAAAAJnw/R6fs7naJLzAyh2rpQoJCm6eaLQo9pSuGgCLcB/s1600/gato-mascarado-preto-e-branco-black-white-cat.jpg');";
     await db.execute(sql);
 

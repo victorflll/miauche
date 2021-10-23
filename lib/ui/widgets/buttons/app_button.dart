@@ -10,6 +10,7 @@ class AppButton extends StatelessWidget {
   final double height;
   final VoidCallback onPressed;
   final IconData? icon;
+  final Widget? iconWidget;
 
   const AppButton({
     Key? key,
@@ -19,6 +20,7 @@ class AppButton extends StatelessWidget {
     this.height = 50,
     required this.onPressed,
     this.icon,
+    this.iconWidget,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -38,7 +40,7 @@ class AppButton extends StatelessWidget {
               color: textColor,
             ),
             const SizedBox(width: 8),
-            Icon(icon),
+            iconWidget ?? Icon(icon),
           ],
         ),
         onPressed: onPressed,
