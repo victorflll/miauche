@@ -1,11 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:miauche/data/utils/string_utils.dart';
 import 'package:miauche/ui/styles/app_colors.dart';
 import 'package:miauche/ui/widgets/app_text.dart';
 import 'package:miauche/ui/widgets/appbar/base_appbar.dart';
 import 'package:miauche/ui/widgets/buttons/app_button.dart';
 import 'package:miauche/ui/widgets/fields/app_text_form_field.dart';
 import 'package:miauche/ui/widgets/indicator/app_indicator.dart';
+import 'package:search_cep/search_cep.dart';
 
 class LostAnimalAdressRegisterScreen extends StatefulWidget {
   const LostAnimalAdressRegisterScreen({Key? key}) : super(key: key);
@@ -229,11 +231,25 @@ class _LostAnimalAdressRegisterScreenState
               primary: AppColors.darkBlue,
             ),
             child: const Icon(Icons.search),
-            onPressed: () {},
+            onPressed: _onSearch,
           ),
         ),
       ],
     );
+  }
+
+  _onSearch() async {
+    String cep = removeCEPSymbols(_cepController.text);
+
+    final viaCepSearchCep = ViaCepSearchCep();
+    final infoCepJSON = await viaCepSearchCep.searchInfoByCep(cep: cep);
+
+    ViaCepInfo? result = infoCepJSON.fold((_) => null, (data) => data);
+
+    _districtController.text = result!.bairro ?? "";
+    _streetController.text = result.logradouro ?? "";
+    _cityController.text = result.localidade ?? "";
+    _complementController.text = result.complemento ?? "";
   }
 
   Padding buildNextButton() {
