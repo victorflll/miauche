@@ -21,11 +21,6 @@ class UserRegisterScreen extends StatelessWidget {
   final _cityController = TextEditingController();
   final _complementController = TextEditingController();
 
-  String? _district;
-  String? _street;
-  String? _city;
-  String? _complement;
-
   UserRegisterScreen({Key? key}) : super(key: key);
 
   @override

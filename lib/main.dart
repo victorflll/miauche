@@ -7,10 +7,10 @@ import 'package:miauche/ui/screens/animal/find/list_find_animals_screen.dart';
 import 'package:miauche/ui/screens/animal/lost/list_lost_animals_screen.dart';
 import 'package:miauche/ui/screens/animal/lost/lost_animal_adress_register_screen.dart';
 import 'package:miauche/ui/screens/animal/lost/lost_animal_appeal_register_screen.dart';
-import 'package:miauche/ui/screens/general/splash_screen.dart';
-import 'package:miauche/ui/screens/home_screen.dart';
-import 'package:miauche/ui/screens/login_screen.dart';
 import 'package:miauche/ui/screens/animal/lost/lost_animal_general_register_screen.dart';
+import 'package:miauche/ui/screens/general/home_screen.dart';
+import 'package:miauche/ui/screens/general/login_screen.dart';
+import 'package:miauche/ui/screens/general/splash_screen.dart';
 import 'package:miauche/ui/screens/user/user_register_screen.dart';
 import 'package:miauche/ui/styles/app_theme.dart';
 
