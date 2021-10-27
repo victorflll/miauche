@@ -39,21 +39,34 @@ class _AppDropdownState extends State<AppDropdown> {
               ),
             ),
           ),
+
           DropdownButtonHideUnderline(
             child: DropdownButtonFormField(
+
               decoration: const InputDecoration(
+                hoverColor: AppColors.darkBlue,
+                border: OutlineInputBorder(
+                  borderRadius:BorderRadius.all(Radius.circular(10)),
+                ),
+
                 hintStyle: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
                   fontFamily: "Poppins",
                 ),
+
                 contentPadding: EdgeInsets.symmetric(horizontal: 8),
+                
               ),
               isExpanded: true,
-              dropdownColor: AppColors.white,
-              iconEnabledColor: AppColors.blue,
+              
+              dropdownColor: AppColors.background,
+              iconEnabledColor: AppColors.darkBlue,
+              iconSize: 32,
               value: dropdownItem,
+             
+             
               hint: AppText(
                 label: widget.hint,
               ),
