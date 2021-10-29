@@ -32,7 +32,7 @@ class _AppDropdownState extends State<AppDropdown> {
           Visibility(
             visible: visible,
             child: Padding(
-              padding: const EdgeInsets.only(left: 8),
+              padding: const EdgeInsets.only(left: 8, bottom: 6),
               child: AppText(
                 label: widget.hint,
                 fontSize: 13,
@@ -42,20 +42,26 @@ class _AppDropdownState extends State<AppDropdown> {
           DropdownButtonHideUnderline(
             child: DropdownButtonFormField(
               decoration: const InputDecoration(
+                hoverColor: AppColors.darkBlue,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(12)),
+                ),
                 hintStyle: TextStyle(
-                  fontSize: 16,
+                  fontSize: 11,
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
                   fontFamily: "Poppins",
                 ),
-                contentPadding: EdgeInsets.symmetric(horizontal: 8),
+                contentPadding: EdgeInsets.symmetric(horizontal: 16),
               ),
               isExpanded: true,
-              dropdownColor: AppColors.white,
-              iconEnabledColor: AppColors.blue,
+              dropdownColor: AppColors.background,
+              iconEnabledColor: AppColors.darkBlue,
+              iconSize: 32,
               value: dropdownItem,
               hint: AppText(
                 label: widget.hint,
+                fontSize: 14,
               ),
               items: widget.items.map<DropdownMenuItem<String>>((String item) {
                 return DropdownMenuItem<String>(
