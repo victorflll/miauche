@@ -32,7 +32,7 @@ class _AppDropdownState extends State<AppDropdown> {
           Visibility(
             visible: visible,
             child: Padding(
-              padding: const EdgeInsets.only(left: 8),
+              padding: const EdgeInsets.only(left: 8, bottom: 6),
               child: AppText(
                 label: widget.hint,
                 fontSize: 13,
