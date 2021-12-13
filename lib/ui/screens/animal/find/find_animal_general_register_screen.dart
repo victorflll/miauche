@@ -76,7 +76,6 @@ class _FindAnimalGeneralRegisterScreenState
             const SizedBox(height: 16),
             AppTextFormField(
               controller: _supostAgeController,
-              keybordType: TextInputType.text,
               label: "Aparenta ter quantos anos:",
               hintText: "Informe a idade animal aqui...",
             ),
@@ -99,7 +98,6 @@ class _FindAnimalGeneralRegisterScreenState
                     hintText:
                         "Informe a deficiência aparente do animal aqui...",
                     controller: _deficiencyController,
-                    keybordType: TextInputType.text,
                   ),
                 ],
               ),
@@ -213,10 +211,11 @@ class _FindAnimalGeneralRegisterScreenState
             ),
             const SizedBox(height: 16),
             AppTextFormField(
+              maxLines: 6,
               controller: _additionalFeaturesController,
               keybordType: TextInputType.multiline,
               label: "Características adicionais:",
-              hintText: "Informe caracteristicas do animal aqui...",
+              hintText: "Informe caracteristicas do seu animal aqui...",
             ),
             buildNextButton(),
           ],

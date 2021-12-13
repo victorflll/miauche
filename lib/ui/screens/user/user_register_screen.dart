@@ -109,7 +109,6 @@ class UserRegisterScreen extends StatelessWidget {
             const SizedBox(height: 16),
             AppTextFormField(
               controller: _cityController,
-              keybordType: TextInputType.text,
               label: "Cidade:",
               hintText: "Digite sua cidade aqui...",
               prefixIcon: const Icon(
@@ -120,7 +119,6 @@ class UserRegisterScreen extends StatelessWidget {
             const SizedBox(height: 16),
             AppTextFormField(
               controller: _districtController,
-              keybordType: TextInputType.text,
               label: "Bairro:",
               hintText: "Digite seu bairro aqui...",
               prefixIcon: const Icon(
@@ -135,7 +133,6 @@ class UserRegisterScreen extends StatelessWidget {
                   flex: 3,
                   child: AppTextFormField(
                     controller: _streetController,
-                    keybordType: TextInputType.text,
                     label: "Rua:",
                     hintText: "Digite sua rua aqui...",
                     prefixIcon: const Icon(
@@ -158,6 +155,7 @@ class UserRegisterScreen extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             AppTextFormField(
+              maxLines: 3,
               controller: _complementController,
               keybordType: TextInputType.multiline,
               label: "Complemento:",
