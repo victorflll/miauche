@@ -27,11 +27,10 @@ class _AppPasswordFormFieldState extends State<AppPasswordFormField> {
       validator: widget.validator ??
           (value) {
             if (value == null || value.isEmpty) {
-              return 'Please enter some text';
+              return 'Campo vazio!';
             }
             return null;
           },
-      maxLength: 45,
       controller: widget.controller,
       keybordType: TextInputType.visiblePassword,
       label: "Senha",

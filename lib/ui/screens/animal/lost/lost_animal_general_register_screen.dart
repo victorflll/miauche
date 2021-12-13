@@ -220,6 +220,7 @@ class _LostAnimalGeneralRegisterScreenState
             ),
             const SizedBox(height: 16),
             AppTextFormField(
+              maxLines: 6,
               controller: _additionalFeaturesController,
               keybordType: TextInputType.multiline,
               label: "Características adicionais:",
