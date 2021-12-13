@@ -92,14 +92,14 @@ class _FindAnimalAppealRegisterScreenState
             const SizedBox(height: 16),
             AppTextFormField(
               controller: _newsTitleController,
-              keybordType: TextInputType.text,
               label: "Nome da notícia:",
               hintText: "Insira aqui o nome da notícia...",
             ),
             const SizedBox(height: 16),
             AppTextFormField(
+              maxLines: 4,
               controller: _descriptionController,
-              keybordType: TextInputType.text,
+              keybordType: TextInputType.multiline,
               label: "Descrição:",
               hintText: "Insira aqui uma descrição...",
             ),

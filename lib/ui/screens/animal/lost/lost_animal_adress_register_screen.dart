@@ -91,14 +91,12 @@ class _LostAnimalAdressRegisterScreenState
             const SizedBox(height: 16),
             AppTextFormField(
               controller: _cityController,
-              keybordType: TextInputType.text,
               label: "Cidade:",
               hintText: "Digite sua cidade aqui...",
             ),
             const SizedBox(height: 16),
             AppTextFormField(
               controller: _districtController,
-              keybordType: TextInputType.text,
               label: "Bairro:",
               hintText: "Digite seu bairro aqui...",
             ),
@@ -109,7 +107,6 @@ class _LostAnimalAdressRegisterScreenState
                   flex: 3,
                   child: AppTextFormField(
                     controller: _streetController,
-                    keybordType: TextInputType.text,
                     label: "Rua:",
                     hintText: "Digite sua rua aqui...",
                   ),
@@ -128,6 +125,7 @@ class _LostAnimalAdressRegisterScreenState
             ),
             const SizedBox(height: 16),
             AppTextFormField(
+              maxLines: 3,
               controller: _complementController,
               keybordType: TextInputType.multiline,
               label: "Complemento:",
@@ -157,26 +155,24 @@ class _LostAnimalAdressRegisterScreenState
           const SizedBox(height: 16),
           AppTextFormField(
             controller: _cityTrueController,
-            keybordType: TextInputType.text,
             label: "Cidade:",
             hintText: "Digite sua cidade aqui...",
           ),
           const SizedBox(height: 16),
           AppTextFormField(
             controller: _districtTrueController,
-            keybordType: TextInputType.text,
             label: "Bairro:",
             hintText: "Digite seu bairro aqui...",
           ),
           const SizedBox(height: 16),
           AppTextFormField(
             controller: _streetTrueController,
-            keybordType: TextInputType.text,
             label: "Rua:",
             hintText: "Digite sua rua aqui...",
           ),
           const SizedBox(height: 16),
           AppTextFormField(
+            maxLines: 3,
             controller: _complementTrueController,
             keybordType: TextInputType.multiline,
             label: "Complemento:",
