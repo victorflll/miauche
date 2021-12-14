@@ -27,7 +27,7 @@ class _AppPasswordFormFieldState extends State<AppPasswordFormField> {
       validator: widget.validator ??
           (value) {
             if (value == null || value.isEmpty) {
-              return 'Campo vazio!';
+              return 'A senha é obrigatória';
             }
             return null;
           },

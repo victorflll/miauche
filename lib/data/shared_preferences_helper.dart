@@ -10,12 +10,12 @@ class SharedPreferencesHelper {
 
   getUser() async {
     SharedPreferences instance = await _getInstance;
-    bool user = instance.getBool('USER');
+    bool? user = instance.getBool('USER');
 
     if (user == null) {
       return false;
+    } else {
+      return user;
     }
-
-    return user;
   }
 }

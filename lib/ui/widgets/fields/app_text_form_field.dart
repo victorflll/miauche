@@ -41,7 +41,10 @@ class AppTextFormField extends StatelessWidget {
       validator: validator ??
           (String? text) {
             if (text == null || text.isEmpty) {
-              return "Campo obrigatório!";
+              return "O e-mail é obrigatório!";
+            }
+            if(!text.contains('@')){
+              return 'E-mail inválido';
             }
             return null;
           },

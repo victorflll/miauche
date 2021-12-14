@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:miauche/data/dao/user_dao.dart';
 import 'package:miauche/data/shared_preferences_helper.dart';
+import 'package:miauche/ui/screens/general/home_screen.dart';
 import 'package:miauche/ui/styles/app_colors.dart';
 import 'package:miauche/ui/widgets/buttons/app_button.dart';
 import 'package:miauche/ui/widgets/dialog/app_alert_dialog.dart';
@@ -34,16 +35,15 @@ class _LoginScreenState extends State<LoginScreen> {
     SharedPreferencesHelper sharedPreferences = SharedPreferencesHelper();
     bool isLogged = await sharedPreferences.getUser();
 
-    if (isLogged) {
+    if (isLogged == true) {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
-          builder: (context) => HomePage(),
+          builder: (context) => const HomeScreen(),
         ),
       );
     }
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -180,20 +180,20 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  emailValidator(String value) {
-    if (value.isEmpty) {
+  emailValidator(String? value) {
+    if (value == null || value.isEmpty) {
       return 'O e-mail é obrigatório';
-    }
-
-    if(!value.contains('@')){
-      return 'E-mail inválido';
+    } else {
+        if (!value.contains('@')) {
+            return 'E-mail inválido';
+        }
     }
 
     return null;
   }
-
-  passwordValidator(String value) {
-    if (value.isEmpty) {
+  
+  passwordValidator(String? value) {
+    if (value == null || value.isEmpty) {
       return 'A senha é obrigatória';
     }
 
@@ -293,7 +293,8 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   _onLogin() async {
-    bool isValid = _formKey.currentState.validate();
+    bool isValid = !_formKey.currentState!.validate();
+    
 
     if (isValid) {
         String email = _emailController.text;
@@ -307,13 +308,12 @@ class _LoginScreenState extends State<LoginScreen> {
         if (data.isNotEmpty) {
           SharedPreferencesHelper sharedPreferences = SharedPreferencesHelper();
           sharedPreferences.setUser(true);
-          
-          Navigator.pushReplacement(
-            context,
-            MaterialPageRoute( 
-              builder: (context) => HomePage(),
-            ),
+    
+          Navigator.pushNamed(context,
+           "/home-screen",
+            arguments: data[0]
           );
+
         } else {
           showDialog(
             context: context,
@@ -327,4 +327,6 @@ class _LoginScreenState extends State<LoginScreen> {
         }
     }
   }
+
 }
+  
