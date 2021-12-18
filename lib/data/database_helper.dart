@@ -69,6 +69,11 @@ class DatabaseHelper {
     await db.execute(sql);
 
     sql =
+        "INSERT INTO `USER`(`name`, `phone`, `email`, `password`, `cep`, `city`, `neighborhood`, `street`, `house_number`, `complement`) VALUES('Visitante', '4002-8922', 'visitante@ifal.edu.br', 'senha123456', '57300-310', 'Arapiraca', 'Centro', 'Rua Estudante José de Oliveira Leite', 00, 'Avenidade');";
+
+    await db.execute(sql);
+
+    sql =
         "INSERT INTO `FIND_ANIMAL`(`age`, `has_collor`, `has_deficiency`, `deficiency`, `animal_type`, `gender`, `breed`, `size`, `fur`, `fur_collor`,`additional_features`, `cep`, `city`, `neighborhood`, `street`, `house_number`, `complement`, `news_name_find`, `description`, `phone_contact`, `image_path`) VALUES (1, 0, 0, '', 'Gato', 'Macho', 'Pintado', 'Pequeno', 'Pelagem curta', 'pintado(preto e branco)', '', '57300000', 'Arapiraca','Novo Horizonte', 'Avenida Minervina', 79, 'Casa', 'Gato pintado sem coleira pelo bairro Novo Horizonte', 'Gato meio arisco encontrado em minha casa', '(82) 98181-9999', 'https://2.bp.blogspot.com/-3TFNt2X_HxM/V0DjAxymUMI/AAAAAAAAJnw/R6fs7naJLzAyh2rpQoJCm6eaLQo9pSuGgCLcB/s1600/gato-mascarado-preto-e-branco-black-white-cat.jpg');";
     await db.execute(sql);
 

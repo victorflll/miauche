@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:miauche/data/dao/user_dao.dart';
+import 'package:miauche/data/shared_preferences_helper.dart';
 import 'package:miauche/ui/styles/app_colors.dart';
 import 'dart:math' as math;
 
@@ -69,7 +71,26 @@ class _SplashScreenState extends State<SplashScreen> {
 
   void splash(context) {
     Future.delayed(const Duration(milliseconds: 2000)).then((value) {
-      Navigator.popAndPushNamed(context, "/login-screen");
+      _loadData();
     });
+  }
+
+  _loadData() async {
+    SharedPreferencesHelper sharedPreferences = SharedPreferencesHelper();
+    Map<String, String> isLogged = await sharedPreferences.getUser();
+
+    String email = isLogged['email']!;
+    String password = isLogged['password']!;
+
+    final data = await UserDAO().fetchUserByEmailAndPassword(
+      email: email,
+      password: password,
+    );
+
+    if (email != "visitante@ifal.edu.br" && email.isNotEmpty) {
+      Navigator.pushNamed(context, "/home-screen", arguments: data[0]);
+    } else if (email.isEmpty || email == "visitante@ifal.edu.br") {
+      Navigator.popAndPushNamed(context, "/login-screen");
+    }
   }
 }
