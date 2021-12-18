@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:miauche/data/shared_preferences_helper.dart';
 import 'package:miauche/domain/models/user_model.dart';
 import 'package:miauche/ui/styles/app_colors.dart';
 import 'package:miauche/ui/widgets/app_text.dart';
@@ -22,8 +23,15 @@ class _HomeScreenState extends State<HomeScreen> {
         return buildCallDrawer(context);
       }),
       drawer: buildDrawer(context, user),
-      body: buildBody(context),
+      body: buildBody(context, user),
     );
+  }
+
+  bool visitant(User user) {
+    if (user.name != "Visitante") {
+      return false;
+    }
+    return true;
   }
 
   FloatingActionButton buildCallDrawer(BuildContext context) {
@@ -35,6 +43,8 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Container buildDrawer(BuildContext context, User user) {
+    final bool isVisitant = visitant(user);
+
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 24),
       color: AppColors.background,
@@ -44,13 +54,19 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           buildUserInformation(user),
           const SizedBox(height: 32),
-          buildDrawerOptions(),
+          Visibility(
+            visible: isVisitant,
+            child: buildExitApp(),
+            replacement: buildDrawerOptions(),
+          ),
         ],
       ),
     );
   }
 
   Row buildUserInformation(User user) {
+    final bool isVisitant = visitant(user);
+
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -63,7 +79,11 @@ class _HomeScreenState extends State<HomeScreen> {
               isBold: true,
               fontSize: 18,
             ),
-            AppText(label: user.email!),
+            Visibility(
+              visible: isVisitant,
+              child: Container(),
+              replacement: AppText(label: user.email!),
+            ),
           ],
         ),
       ],
@@ -95,7 +115,11 @@ class _HomeScreenState extends State<HomeScreen> {
         shape: const StadiumBorder(),
         primary: AppColors.white,
       ),
-      onPressed: () => SystemNavigator.pop(),
+      onPressed: () {
+        SharedPreferencesHelper sharedPreferences = SharedPreferencesHelper();
+        sharedPreferences.logout();
+        SystemNavigator.pop();
+      },
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -113,7 +137,9 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Center buildBody(BuildContext context) {
+  Center buildBody(BuildContext context, User user) {
+    final bool isVisitant = visitant(user);
+
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -137,7 +163,11 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ],
           ),
-          buildRegisterAnimalButton(context),
+          Visibility(
+            visible: isVisitant,
+            child: Container(),
+            replacement: buildRegisterAnimalButton(context),
+          ),
         ],
       ),
     );

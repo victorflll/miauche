@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:miauche/data/dao/user_dao.dart';
+import 'package:miauche/data/shared_preferences_helper.dart';
+import 'package:miauche/ui/screens/general/home_screen.dart';
 import 'package:miauche/ui/styles/app_colors.dart';
 import 'package:miauche/ui/widgets/buttons/app_button.dart';
 import 'package:miauche/ui/widgets/dialog/app_alert_dialog.dart';
@@ -21,6 +23,33 @@ class _LoginScreenState extends State<LoginScreen> {
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  _loadData() async {
+    SharedPreferencesHelper sharedPreferences = SharedPreferencesHelper();
+    Map<String, String> isLogged = await sharedPreferences.getUser();
+
+    String email = isLogged['email']!;
+    String password = isLogged['password']!;
+
+    print(email);
+    print(password);
+
+    if (email.isNotEmpty && password.isNotEmpty) {
+      sharedPreferences.setUser(email, password);
+    }
+
+    final data = await UserDAO().fetchUserByEmailAndPassword(
+      email: email,
+      password: password,
+    );
+
+    Navigator.pushNamed(context, "/home-screen", arguments: data[0]);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -126,6 +155,7 @@ class _LoginScreenState extends State<LoginScreen> {
               obscureText: false,
               controller: _emailController,
               keybordType: TextInputType.emailAddress,
+              validator: (value) => emailValidator(value),
               label: "E-mail",
               hintText: "Insira seu email aqui...",
               prefixIcon: const Icon(
@@ -136,6 +166,7 @@ class _LoginScreenState extends State<LoginScreen> {
             const SizedBox(height: 12),
             AppPasswordFormField(
               controller: _passwordController,
+              validator: (value) => passwordValidator(value),
               obscureText: true,
             ),
             buildForgetPasswordButton(height: height, width: width),
@@ -147,12 +178,52 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  AppButton buildLoginButton({required width, required height}) {
-    return AppButton(
-      text: "Entrar",
-      icon: Icons.login,
-      onPressed: _onLogin,
+  buildLoginButton({required width, required height}) {
+    return Row(
+      children: [
+        Expanded(
+          flex: 1,
+          child: AppButton(
+            text: "Entrar como\nVisitante",
+            icon: Icons.login,
+            buttonColor: AppColors.white,
+            textColor: AppColors.darkBlue,
+            iconColor: AppColors.darkBlue,
+            fontSize: 14,
+            onPressed: _loadData,
+          ),
+        ),
+        const SizedBox(width: 8),
+        Expanded(
+          flex: 1,
+          child: AppButton(
+            text: "Entrar",
+            icon: Icons.login,
+            onPressed: _onLogin,
+          ),
+        ),
+      ],
     );
+  }
+
+  emailValidator(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'O e-mail é obrigatório';
+    } else {
+      if (!value.contains('@')) {
+        return 'E-mail inválido';
+      }
+    }
+
+    return null;
+  }
+
+  passwordValidator(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'A senha é obrigatória';
+    }
+
+    return null;
   }
 
   Container buildForgetPasswordButton({required width, required height}) {
@@ -248,28 +319,34 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   _onLogin() async {
-    if (!_formKey.currentState!.validate()) return;
+    bool isValid = _formKey.currentState!.validate();
 
-    String email = _emailController.text;
-    String password = _passwordController.text;
+    if (isValid) {
+      String email = _emailController.text;
+      String password = _passwordController.text;
 
-    final data = await UserDAO().fetchUserByEmailAndPassword(
-      email: email,
-      password: password,
-    );
-
-    if (data.isNotEmpty) {
-      Navigator.pushNamed(context, "/home-screen", arguments: data[0]);
-    } else {
-      showDialog(
-        context: context,
-        builder: (_) => const AppAlertDialog(
-          icon: Icons.highlight_remove_outlined,
-          text: "Usuário ou Senha inválidos!",
-          description:
-              "Verifique se digitou tudo certo ou então tente se cadastrar.",
-        ),
+      final data = await UserDAO().fetchUserByEmailAndPassword(
+        email: email,
+        password: password,
       );
+
+      SharedPreferencesHelper sharedPreferences = SharedPreferencesHelper();
+
+      sharedPreferences.setUser(email, password);
+
+      if (data.isNotEmpty) {
+        Navigator.pushNamed(context, "/home-screen", arguments: data[0]);
+      } else {
+        showDialog(
+          context: context,
+          builder: (_) => const AppAlertDialog(
+            icon: Icons.highlight_remove_outlined,
+            text: "Usuário ou Senha inválidos!",
+            description:
+                "Verifique se digitou tudo certo ou então tente se cadastrar.",
+          ),
+        );
+      }
     }
   }
 }
