@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:miauche/data/dao/user_dao.dart';
 import 'package:miauche/data/shared_preferences_helper.dart';
-import 'package:miauche/ui/screens/general/home_screen.dart';
 import 'package:miauche/ui/styles/app_colors.dart';
 import 'package:miauche/ui/widgets/buttons/app_button.dart';
 import 'package:miauche/ui/widgets/dialog/app_alert_dialog.dart';
@@ -35,9 +34,6 @@ class _LoginScreenState extends State<LoginScreen> {
 
     String email = isLogged['email']!;
     String password = isLogged['password']!;
-
-    print(email);
-    print(password);
 
     if (email.isNotEmpty && password.isNotEmpty) {
       sharedPreferences.setUser(email, password);

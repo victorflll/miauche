@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:miauche/data/utils/string_utils.dart';
+import 'package:miauche/domain/models/user_model.dart';
 import 'package:miauche/ui/styles/app_colors.dart';
 import 'package:miauche/ui/widgets/app_text.dart';
 import 'package:miauche/ui/widgets/appbar/base_appbar.dart';
@@ -25,13 +26,33 @@ class UserRegisterScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    dynamic user = ModalRoute.of(context)!.settings.arguments;
+    bool isEditPage = false;
+
+    if (user != null) {
+      isEditPage = true;
+
+      User u = user;
+
+      _emailController.text = u.email ?? "";
+      _phoneController.text = u.phone ?? "";
+      _nameController.text = u.name ?? "";
+      _cepController.text = u.cep ?? "";
+      _districtController.text = u.neighborhood ?? "";
+      _streetController.text = u.street ?? "";
+      _numberController.text =
+          u.houseNumber.toString() == "null" ? "" : u.houseNumber.toString();
+      _cityController.text = u.city ?? "";
+      _complementController.text = u.complement ?? "";
+    }
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
           alignment: Alignment.center,
           child: Column(
             children: [
-              const BaseAppBar(label: "Cadastro"),
+              BaseAppBar(label: isEditPage ? "Editar cadastro" : "Cadastro"),
               buildTitle(),
               buildForm(),
             ],

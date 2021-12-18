@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:miauche/data/shared_preferences_helper.dart';
 import 'package:miauche/domain/models/user_model.dart';
 import 'package:miauche/ui/styles/app_colors.dart';
@@ -57,7 +56,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Visibility(
             visible: isVisitant,
             child: buildExitApp(),
-            replacement: buildDrawerOptions(),
+            replacement: buildDrawerOptions(user),
           ),
         ],
       ),
@@ -90,20 +89,33 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Padding buildDrawerOptions() {
+  Padding buildDrawerOptions(User user) {
     return Padding(
       padding: const EdgeInsets.only(left: 8),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const AppText(label: "Editar perfil"),
-          const SizedBox(height: 8),
-          const AppText(label: "Seus animais perdidos"),
-          const SizedBox(height: 8),
-          const AppText(label: "Seus animais encontrados"),
-          const SizedBox(height: 8),
+          buildActionApp("Editar perfil", () {
+            Navigator.pushNamed(
+              context,
+              "/user-register-screen",
+              arguments: user,
+            );
+          }),
+          buildActionApp("Seus animais perdidos", () {}),
+          buildActionApp("Seus animais encontrados", () {}),
+          const SizedBox(height: 16),
           buildExitApp(),
         ],
+      ),
+    );
+  }
+
+  TextButton buildActionApp(String text, Function()? onPressed) {
+    return TextButton(
+      onPressed: onPressed,
+      child: AppText(
+        label: text,
       ),
     );
   }
@@ -118,13 +130,13 @@ class _HomeScreenState extends State<HomeScreen> {
       onPressed: () {
         SharedPreferencesHelper sharedPreferences = SharedPreferencesHelper();
         sharedPreferences.logout();
-        SystemNavigator.pop();
+        Navigator.popAndPushNamed(context, "/login-screen");
       },
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
           AppText(
-            label: "Sair do aplicativo",
+            label: "Sair da conta",
             color: Colors.red.shade900,
           ),
           const SizedBox(width: 8),
