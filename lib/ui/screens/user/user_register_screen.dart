@@ -1,3 +1,5 @@
+import 'dart:js';
+
 import 'package:flutter/material.dart';
 import 'package:miauche/data/utils/string_utils.dart';
 import 'package:miauche/domain/models/user_model.dart';
@@ -7,6 +9,8 @@ import 'package:miauche/ui/widgets/appbar/base_appbar.dart';
 import 'package:miauche/ui/widgets/buttons/app_button.dart';
 import 'package:miauche/ui/widgets/fields/app_text_form_field.dart';
 import 'package:search_cep/search_cep.dart';
+
+import '../../widgets/dialog/app_alert_dialog.dart';
 
 class UserRegisterScreen extends StatelessWidget {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -61,6 +65,23 @@ class UserRegisterScreen extends StatelessWidget {
       ),
     );
   }
+//Tá dando erro nesse context, por isso, deixamos como comentário e no botão deixamos o _onRegister
+//ao invés do onNextStep.
+  /*void onNextStep() {
+    bool valid;
+    valid = _formKey.currentState!.validate();
+    if (valid == true) {
+    } else {
+      showDialog(
+        context: context,
+        builder: (_) => const AppAlertDialog(
+          icon: Icons.highlight_remove_outlined,
+          text: "Dados do formulário inválidos!",
+          description: "Verifique se digitou tudo certo.",
+        ),
+      );
+    }
+  }*/
 
   Container buildForm() {
     return Container(
