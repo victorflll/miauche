@@ -9,6 +9,8 @@ import 'package:miauche/ui/widgets/buttons/app_button.dart';
 import 'package:miauche/ui/widgets/fields/app_text_form_field.dart';
 import 'package:miauche/ui/widgets/indicator/app_indicator.dart';
 
+import '../../../widgets/dialog/app_alert_dialog.dart';
+
 class LostAnimalAppealRegisterScreen extends StatefulWidget {
   const LostAnimalAppealRegisterScreen({Key? key}) : super(key: key);
 
@@ -197,11 +199,34 @@ class _LostAnimalAppealRegisterScreenState
     );
   }
 
+  void onLastStep() {
+    bool valid;
+    valid = _formKey.currentState!.validate();
+    if (valid == true) {
+      showDialog(
+        context: context,
+        builder: (_) => const AppAlertDialog(
+          icon: Icons.highlight_remove_outlined,
+          text: "Cadastro Concluído!",
+        ),
+      );
+    } else {
+      showDialog(
+        context: context,
+        builder: (_) => const AppAlertDialog(
+          icon: Icons.highlight_remove_outlined,
+          text: "Dados do formulário inválidos!",
+          description: "Verifique se digitou tudo certo.",
+        ),
+      );
+    }
+  }
+
   AppButton buildDoneButton() {
     return AppButton(
       text: "Finalizar",
       icon: Icons.done,
-      onPressed: () => {},
+      onPressed: () => {onLastStep()},
     );
   }
 }

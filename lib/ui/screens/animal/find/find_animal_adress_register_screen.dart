@@ -8,6 +8,8 @@ import 'package:miauche/ui/widgets/fields/app_text_form_field.dart';
 import 'package:miauche/ui/widgets/indicator/app_indicator.dart';
 import 'package:search_cep/search_cep.dart';
 
+import '../../../widgets/dialog/app_alert_dialog.dart';
+
 class FindAnimalAdressRegisterScreen extends StatefulWidget {
   const FindAnimalAdressRegisterScreen({Key? key}) : super(key: key);
 
@@ -174,18 +176,30 @@ class _FindAnimalAdressRegisterScreenState
     _complementController.text = result.complemento ?? "";
   }
 
+  void onNextStep() {
+    bool valid;
+    valid = _formKey.currentState!.validate();
+    if (valid == true) {
+      Navigator.pushNamed(context, "/find-animal-appeal-register-screen");
+    } else {
+      showDialog(
+        context: context,
+        builder: (_) => const AppAlertDialog(
+          icon: Icons.highlight_remove_outlined,
+          text: "Dados do formulário inválidos!",
+          description: "Verifique se digitou tudo certo.",
+        ),
+      );
+    }
+  }
+
   Padding buildNextButton() {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 16),
       child: AppButton(
         text: "Próximo",
         icon: Icons.arrow_forward,
-        onPressed: () => {
-          Navigator.pushNamed(
-            context,
-            "/find-animal-appeal-register-screen",
-          ),
-        },
+        onPressed: () => {onNextStep()},
       ),
     );
   }

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:miauche/data/dao/lost_animal_dao.dart';
+import 'package:miauche/domain/models/animal_model.dart';
+import 'package:miauche/domain/models/lost_animal_model.dart';
 import 'package:miauche/ui/styles/app_colors.dart';
 import 'package:miauche/ui/widgets/app_text.dart';
 import 'package:miauche/ui/widgets/appbar/base_appbar.dart';
@@ -6,6 +9,8 @@ import 'package:miauche/ui/widgets/buttons/app_button.dart';
 import 'package:miauche/ui/widgets/fields/app_dropdown.dart';
 import 'package:miauche/ui/widgets/indicator/app_indicator.dart';
 import 'package:miauche/ui/widgets/fields/app_text_form_field.dart';
+
+import '../../../widgets/dialog/app_alert_dialog.dart';
 
 class LostAnimalGeneralRegisterScreen extends StatefulWidget {
   const LostAnimalGeneralRegisterScreen({Key? key}) : super(key: key);
@@ -233,18 +238,30 @@ class _LostAnimalGeneralRegisterScreenState
     );
   }
 
+  void onNextStep() {
+    bool valid;
+    valid = _formKey.currentState!.validate();
+    if (valid) {
+      Navigator.pushNamed(context, "/lost-animal-adress-register-screen");
+    } else {
+      showDialog(
+        context: context,
+        builder: (_) => const AppAlertDialog(
+          icon: Icons.highlight_remove_outlined,
+          text: "Dados do formulário inválidos!",
+          description: "Verifique se digitou tudo certo.",
+        ),
+      );
+    }
+  }
+
   Padding buildNextButton() {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 16),
       child: AppButton(
         text: "Próximo",
         icon: Icons.arrow_forward,
-        onPressed: () => {
-          Navigator.pushNamed(
-            context,
-            "/lost-animal-adress-register-screen",
-          ),
-        },
+        onPressed: () => {onNextStep()},
       ),
     );
   }
