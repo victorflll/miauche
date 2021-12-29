@@ -119,6 +119,7 @@ class _LostAnimalAdressRegisterScreenState
                     keybordType: TextInputType.number,
                     label: "Nº:",
                     hintText: "Digite o número da sua casa aqui...",
+                    validator: (value) => numberValidator(value),
                   ),
                 ),
               ],
@@ -139,6 +140,13 @@ class _LostAnimalAdressRegisterScreenState
         ),
       ),
     );
+  }
+
+   numberValidator(String? value) {
+    if (value == null || value.isEmpty) {
+      return '*';
+    }
+    return null;
   }
 
   Visibility buildVisibility() {

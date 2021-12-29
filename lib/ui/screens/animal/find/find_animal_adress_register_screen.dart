@@ -111,6 +111,7 @@ class _FindAnimalAdressRegisterScreenState
                     keybordType: TextInputType.number,
                     label: "Nº:",
                     hintText: "Número da residência...",
+                    validator: (value) => numberValidator(value),
                   ),
                 ),
               ],
@@ -129,6 +130,14 @@ class _FindAnimalAdressRegisterScreenState
       ),
     );
   }
+
+ numberValidator(String? value) {
+    if (value == null || value.isEmpty) {
+      return '*';
+    }
+    return null;
+  }
+
 
   Row buildSearchCEP() {
     return Row(
@@ -180,13 +189,32 @@ class _FindAnimalAdressRegisterScreenState
       child: AppButton(
         text: "Próximo",
         icon: Icons.arrow_forward,
-        onPressed: () => {
-          Navigator.pushNamed(
-            context,
-            "/find-animal-appeal-register-screen",
-          ),
-        },
+        onPressed: _onNextStep,
       ),
     );
   }
+
+  _onNextStep() {
+    if (!_formKey.currentState!.validate()) return;
+
+    dynamic argument = ModalRoute.of(context)!.settings.arguments;
+
+    Map data = {
+      ...argument,
+      'CEP': _cepController.text,
+      'Bairro': _districtController.text,
+      'Rua': _streetController.text,
+      'Nº': _numberController.text,
+      'Cidade': _cityController.text,
+      'Complemento': _complementController.text,
+    };
+
+     Navigator.pushNamed(
+      context,
+      "/find-animal-appeal-register-screen",
+      arguments: data,
+    );
+  }
+
+
 }
