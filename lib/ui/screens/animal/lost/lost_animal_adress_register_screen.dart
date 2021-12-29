@@ -248,6 +248,30 @@ class _LostAnimalAdressRegisterScreenState
     _complementController.text = result.complemento ?? "";
   }
 
+  _onNextStep() {
+    if (!_formKey.currentState!.validate()) return;
+
+    dynamic argument = ModalRoute.of(context)!.settings.arguments;
+
+    Map data = {
+      ...argument,
+      'CEP': _cepController.text,
+      'district': _districtController.text,
+      'street': _streetController.text,
+      'number': _numberController.text,
+      'city': _cityController.text,
+      'complement': _complementController.text,
+      'citytrue': _cityTrueController.text,
+      'districttrue': _districtTrueController,
+      'streettrue': _streetTrueController,
+      'complementtrue': _complementTrueController,
+    };
+    Navigator.pushNamed(
+      context,
+      "/lost-animal-appeal-register-screen",
+    );
+  }
+
   Padding buildNextButton() {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 16),
