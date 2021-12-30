@@ -206,9 +206,9 @@ class _FindAnimalAppealRegisterScreenState
 
     Map data = {
       ...argument,
-      'nomeNoticia': _newsTitleController.text,
-      'Descrição': _descriptionController.text,
+      'newsTitle': _newsTitleController.text,
+      'description': _descriptionController.text,
     };
-    debugPrint(">>>>Todos os dados: $data");
+    debugPrint(">>>>All data: $data");
   }
 }

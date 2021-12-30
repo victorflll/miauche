@@ -269,14 +269,15 @@ class _LostAnimalAdressRegisterScreenState
       'number': _numberController.text,
       'city': _cityController.text,
       'complement': _complementController.text,
-      'citytrue': _cityTrueController.text,
-      'districttrue': _districtTrueController,
-      'streettrue': _streetTrueController,
-      'complementtrue': _complementTrueController,
+      'cityTrue': _cityTrueController.text,
+      'districtTrue': _districtTrueController,
+      'streetTrue': _streetTrueController,
+      'complementTrue': _complementTrueController,
     };
     Navigator.pushNamed(
       context,
       "/lost-animal-appeal-register-screen",
+      arguments: data,
     );
   }
 
@@ -286,12 +287,7 @@ class _LostAnimalAdressRegisterScreenState
       child: AppButton(
         text: "Próximo",
         icon: Icons.arrow_forward,
-        onPressed: () => {
-          Navigator.pushNamed(
-            context,
-            "/lost-animal-appeal-register-screen",
-          ),
-        },
+        onPressed: _onNextStep,
       ),
     );
   }

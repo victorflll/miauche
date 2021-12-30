@@ -202,11 +202,11 @@ class _FindAnimalAdressRegisterScreenState
     Map data = {
       ...argument,
       'CEP': _cepController.text,
-      'Bairro': _districtController.text,
-      'Rua': _streetController.text,
-      'Nº': _numberController.text,
-      'Cidade': _cityController.text,
-      'Complemento': _complementController.text,
+      'district': _districtController.text,
+      'street': _streetController.text,
+      'number': _numberController.text,
+      'city': _cityController.text,
+      'complement': _complementController.text,
     };
 
      Navigator.pushNamed(

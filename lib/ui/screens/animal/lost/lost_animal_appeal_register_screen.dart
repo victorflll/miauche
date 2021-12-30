@@ -202,7 +202,7 @@ class _LostAnimalAppealRegisterScreenState
     return AppButton(
       text: "Finalizar",
       icon: Icons.done,
-      onPressed: () => {_onLastStep()},
+      onPressed: _onLastStep,
     );
   }
 
@@ -213,11 +213,11 @@ class _LostAnimalAppealRegisterScreenState
 
     Map data = {
       ...argument,
-      'newstitle': _newsTitleController.text,
+      'newsTitle': _newsTitleController.text,
       'description': _descriptionController.text,
       'reward': _rewardController.text,
-      'animalfile': _animalFile,
+      'animalFile': _animalFile,
     };
-    debugPrint(">>>>Todos os dados: $data");
+    debugPrint(">>>>All data: $data");
   }
 }
