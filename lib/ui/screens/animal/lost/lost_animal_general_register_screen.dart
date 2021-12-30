@@ -47,7 +47,7 @@ class _LostAnimalGeneralRegisterScreenState
             BaseAppBar(
               label: "Cadastro de Animal",
               onPressed: () {
-                Navigator.popAndPushNamed(context, "/home-screen");
+                Navigator.pop(context);
               },
             ),
             buildIndicator(),

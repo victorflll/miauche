@@ -21,7 +21,8 @@ class _FindAnimalGeneralRegisterScreenState
 
   final TextEditingController _supostAgeController = TextEditingController();
   final TextEditingController _deficiencyController = TextEditingController();
-  final TextEditingController _additionalFeaturesController = TextEditingController();
+  final TextEditingController _additionalFeaturesController =
+      TextEditingController();
 
   late String _collar;
   late String _deficiency;
@@ -45,7 +46,7 @@ class _FindAnimalGeneralRegisterScreenState
             BaseAppBar(
               label: "Cadastro de Animal",
               onPressed: () {
-                Navigator.popAndPushNamed(context, "/home-screen");
+                Navigator.pop(context);
               },
             ),
             buildIndicator(),
@@ -303,7 +304,7 @@ class _FindAnimalGeneralRegisterScreenState
     if (!_formKey.currentState!.validate()) return;
 
     Map data = {
-      'supostAge': _supostAgeController .text,
+      'supostAge': _supostAgeController.text,
       'collar': _collar,
       'hasDeficiency': _deficiency,
       'deficiency': _deficiencyController.text,
