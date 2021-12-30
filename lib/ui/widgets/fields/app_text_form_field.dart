@@ -16,6 +16,7 @@ class AppTextFormField extends StatelessWidget {
   final AutovalidateMode? autovalidateMode;
   final int? minLines;
   final int? maxLines;
+  final bool isValidated;
 
   const AppTextFormField({
     Key? key,
@@ -32,19 +33,20 @@ class AppTextFormField extends StatelessWidget {
     this.autovalidateMode,
     this.minLines,
     this.maxLines = 1,
+    this.isValidated = true,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      autovalidateMode: autovalidateMode,
       validator: validator ??
           (String? text) {
-            if (text == null || text.isEmpty) {
-              return "O e-mail é obrigatório!";
-            }
-            if(!text.contains('@')){
-              return 'E-mail inválido';
+            if (isValidated) {
+              if (text == null || text.isEmpty) {
+                return "O campo é obrigatório!";
+              }
+            } else {
+              return null;
             }
             return null;
           },

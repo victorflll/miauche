@@ -196,12 +196,28 @@ class _LostAnimalAppealRegisterScreenState
       },
     );
   }
+  /*_*/
 
   AppButton buildDoneButton() {
     return AppButton(
       text: "Finalizar",
       icon: Icons.done,
-      onPressed: () => {},
+      onPressed: _onLastStep,
     );
+  }
+
+  _onLastStep() {
+    if (!_formKey.currentState!.validate()) return;
+
+    dynamic argument = ModalRoute.of(context)!.settings.arguments;
+
+    Map data = {
+      ...argument,
+      'newsTitle': _newsTitleController.text,
+      'description': _descriptionController.text,
+      'reward': _rewardController.text,
+      'animalFile': _animalFile,
+    };
+    debugPrint(">>>>All data: $data");
   }
 }

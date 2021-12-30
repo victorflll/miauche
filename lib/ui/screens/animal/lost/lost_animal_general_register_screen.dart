@@ -220,6 +220,7 @@ class _LostAnimalGeneralRegisterScreenState
             ),
             const SizedBox(height: 16),
             AppTextFormField(
+              isValidated: false,
               maxLines: 6,
               controller: _additionalFeaturesController,
               keybordType: TextInputType.multiline,
@@ -239,12 +240,7 @@ class _LostAnimalGeneralRegisterScreenState
       child: AppButton(
         text: "Próximo",
         icon: Icons.arrow_forward,
-        onPressed: () => {
-          Navigator.pushNamed(
-            context,
-            "/lost-animal-adress-register-screen",
-          ),
-        },
+        onPressed: _onNextStep,
       ),
     );
   }
@@ -270,8 +266,6 @@ class _LostAnimalGeneralRegisterScreenState
 
   void _selectCollar(String collar) {
     _collar = collar;
-
-    debugPrint(">>>>Gênero: $_collar");
   }
 
   void _selectDeficiency(String deficiency) {
@@ -279,8 +273,6 @@ class _LostAnimalGeneralRegisterScreenState
     setState(() {
       deficiencyYes = deficiency;
     });
-
-    debugPrint(">>>>Deficiency: $_deficiency");
   }
 
   void _selectAnimal(String animal) {
@@ -289,43 +281,54 @@ class _LostAnimalGeneralRegisterScreenState
       animalDog = animal;
       animalCat = animal;
     });
-
-    debugPrint(">>>>Animal: $_animal");
   }
 
   void _selectGender(String gender) {
     _gender = gender;
-
-    debugPrint(">>>>Gênero: $_gender");
   }
 
   void _selectDogBreed(String dogBreed) {
     _dogBreed = dogBreed;
-
-    debugPrint(">>>>DogBreed: $_dogBreed");
   }
 
   void _selectCatBreed(String catBreed) {
     _catBreed = catBreed;
-
-    debugPrint(">>>>CatBreed: $_catBreed");
   }
 
   void _selectSizeAnimal(String sizeAnimal) {
     _sizeAnimal = sizeAnimal;
-
-    debugPrint(">>>>SizeAnimal: $_sizeAnimal");
   }
 
   void _selectFur(String fur) {
     _fur = fur;
-
-    debugPrint(">>>>Fur: $_fur");
   }
 
   void _selectFurColor(String furColor) {
     _furColor = furColor;
+  }
 
-    debugPrint(">>>>FurColor: $_furColor");
+  _onNextStep() {
+    if (!_formKey.currentState!.validate()) return;
+
+    Map data = {
+      'name': _nameController.text,
+      'age': _ageController.text,
+      'collar': _collar,
+      'hasDeficiency': _deficiency,
+      'deficiency': _deficiencyController.text,
+      'animal': _animal,
+      'breed': _animal == 'Cachorro' ? _dogBreed : _catBreed,
+      'gender': _gender,
+      'sizeAnimal': _sizeAnimal,
+      'fur': _fur,
+      'furCollor': _furColor,
+      'additionalFeatures': _additionalFeaturesController.text,
+    };
+
+    Navigator.pushNamed(
+      context,
+      "/lost-animal-adress-register-screen",
+      arguments: data,
+    );
   }
 }

@@ -119,6 +119,7 @@ class _LostAnimalAdressRegisterScreenState
                     keybordType: TextInputType.number,
                     label: "Nº:",
                     hintText: "Digite o número da sua casa aqui...",
+                    validator: (value) => numberValidator(value),
                   ),
                 ),
               ],
@@ -139,6 +140,13 @@ class _LostAnimalAdressRegisterScreenState
         ),
       ),
     );
+  }
+
+   numberValidator(String? value) {
+    if (value == null || value.isEmpty) {
+      return '*';
+    }
+    return null;
   }
 
   Visibility buildVisibility() {
@@ -248,18 +256,38 @@ class _LostAnimalAdressRegisterScreenState
     _complementController.text = result.complemento ?? "";
   }
 
+  _onNextStep() {
+    if (!_formKey.currentState!.validate()) return;
+
+    dynamic argument = ModalRoute.of(context)!.settings.arguments;
+
+    Map data = {
+      ...argument,
+      'CEP': _cepController.text,
+      'district': _districtController.text,
+      'street': _streetController.text,
+      'number': _numberController.text,
+      'city': _cityController.text,
+      'complement': _complementController.text,
+      'cityTrue': _cityTrueController.text,
+      'districtTrue': _districtTrueController,
+      'streetTrue': _streetTrueController,
+      'complementTrue': _complementTrueController,
+    };
+    Navigator.pushNamed(
+      context,
+      "/lost-animal-appeal-register-screen",
+      arguments: data,
+    );
+  }
+
   Padding buildNextButton() {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 16),
       child: AppButton(
         text: "Próximo",
         icon: Icons.arrow_forward,
-        onPressed: () => {
-          Navigator.pushNamed(
-            context,
-            "/lost-animal-appeal-register-screen",
-          ),
-        },
+        onPressed: _onNextStep,
       ),
     );
   }

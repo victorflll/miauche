@@ -6,12 +6,16 @@ class AppDropdown extends StatefulWidget {
   final List<String> items;
   final String hint;
   final dynamic callback;
+  final bool isValidated;
+  final FormFieldValidator<String>? validator;
 
   const AppDropdown({
     Key? key,
     required this.items,
     required this.hint,
     required this.callback,
+    this.isValidated = true,
+    this.validator,
   }) : super(key: key);
 
   @override
@@ -41,6 +45,17 @@ class _AppDropdownState extends State<AppDropdown> {
           ),
           DropdownButtonHideUnderline(
             child: DropdownButtonFormField(
+              validator: widget.validator ??
+                  (String? text) {
+                    if (widget.isValidated) {
+                      if (text == null || text.isEmpty) {
+                        return "O campo é obrigatório!";
+                      }
+                    } else {
+                      return null;
+                    }
+                    return null;
+                  },
               decoration: const InputDecoration(
                 hoverColor: AppColors.darkBlue,
                 border: OutlineInputBorder(
