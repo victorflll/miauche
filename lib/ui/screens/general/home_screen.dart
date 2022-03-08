@@ -178,7 +178,36 @@ class _HomeScreenState extends State<HomeScreen> {
           Visibility(
             visible: isVisitant,
             child: Container(),
-            replacement: buildRegisterAnimalButton(context),
+            replacement: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                buildRegisterAnimalButton(context),
+                buildMapButton(context),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  TextButton buildMapButton(BuildContext context) {
+    return TextButton(
+      onPressed: () {
+        Navigator.pushNamed(context, '/map-screen');
+      },
+      child: Column(
+        children: const [
+          Icon(
+            Icons.map,
+            size: 86,
+            color: AppColors.violet,
+          ),
+          AppText(
+            label: "Região de\nAtuação",
+            color: AppColors.darkBlue,
+            isBold: true,
+            fontSize: 18,
           ),
         ],
       ),
